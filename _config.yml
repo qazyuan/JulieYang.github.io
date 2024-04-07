@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Julie's blogs
 subtitle: ""
 description: ""
 keywords:
-author: John Doe
+author: Julie
 language: en
 timezone: ""
 
@@ -46,7 +46,7 @@ future: true
 syntax_highlighter: highlight.js
 highlight:
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace: ""
   wrap: true
   hljs: false
@@ -64,6 +64,11 @@ index_generator:
   per_page: 10
   order_by: -date
 
+archive_generator:
+  per_page: 0
+  yearly: false
+  monthly: false
+  daily: false
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -96,7 +101,8 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: ZenMind
+# theme: Hacker
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
