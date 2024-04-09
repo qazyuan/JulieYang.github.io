@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+  <meta name="robots" content="index, follow">
+  <!-- title -->
+  
+    
+  <title>detect-data-type - Julie&#39;s blogs</title>
+    
+  
+  
+  <!-- open graph -->
+  <meta name="description" content="Problem DescriptionThis is an easy problem. For all the basic data types in JavaScript, how could you write a function to detect the type of arbitrary data? Besides basic types, you need to also handl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="detect-data-type">
+<meta property="og:url" content="https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/index.html">
+<meta property="og:site_name" content="Julie&#39;s blogs">
+<meta property="og:description" content="Problem DescriptionThis is an easy problem. For all the basic data types in JavaScript, how could you write a function to detect the type of arbitrary data? Besides basic types, you need to also handl">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-07T09:44:30.000Z">
+<meta property="article:modified_time" content="2024-04-09T07:31:29.762Z">
+<meta property="article:author" content="Julie">
+<meta name="twitter:card" content="summary">
+  <!-- canonical -->
+  
+  <link rel="canonical" href="https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <!-- CSS -->
+  
+<link rel="stylesheet" href="/blogs/css/reset.css">
+
+  
+<link rel="stylesheet" href="/blogs/css/style.css">
+
+  
+<link rel="stylesheet" href="/blogs/css/markdown.css">
+
+  
+<link rel="stylesheet" href="/blogs/css/fonts.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+    <body>
+        <div class="paper">
+            <div class="paper-main">
+                
+                    <div class="post-header">
+    <a class="logo" href="/blogs/">Julie&#39;s blogs</a>
+    <!-- <div class="logo"><a href="/" title="Len"><img src="/img/logo.svg" alt="Len" aria-label="logo" height="20"></a></div> -->
+        <ul class="nav">
+            
+            <li><a href="/blogs/">Home</a></li>
+            
+        </ul>
+
+
+    </a>
+</div>
+
+                
+                <div class="post-main">
+    
+        <div class="post-main-title">
+            detect-data-type
+        </div>
+        <div class="post-meta">
+            2024-04-07 ｜ 
+            
+        </div>
+        <!-- 圆角分类 -->
+        <!-- <div class="tags"> -->
+            <!--  -->
+        <!-- </div> -->
+        <div class="post-md">
+            <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>This is an easy problem.</p>
+<p>For <a target="_blank" rel="noopener" href="https://javascript.info/types" title="null">all the basic data types</a> in JavaScript, how could you write a function to detect the type of arbitrary data?</p>
+<p>Besides basic types, you need to also handle also commonly used complex data type including <code>Array</code>, <code>ArrayBuffer</code>, <code>Map</code>, <code>Set</code>, <code>Date</code> and <code>Function</code></p>
+<p>The goal is not to list up all the data types but to show us how to solve the problem when we need to.</p>
+<p>The type should be lowercase</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">detectType</span>(<span class="number">1</span>); <span class="comment">// &#x27;number&#x27;</span></span><br><span class="line"><span class="title function_">detectType</span>(<span class="keyword">new</span> <span class="title class_">Map</span>()); <span class="comment">// &#x27;map&#x27;</span></span><br><span class="line"><span class="title function_">detectType</span>([]); <span class="comment">// &#x27;array&#x27;</span></span><br><span class="line"><span class="title function_">detectType</span>(<span class="literal">null</span>); <span class="comment">// &#x27;null&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// more in judging step</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>We’ll use object prototype and regular expressions:</p>
+<ol>
+<li>Use <code>Object.prototype.toString.call(data).toLowerCase()</code> to get the object type as a string, such as [object string]</li>
+<li>Use the regular expressions to extract the type from the string.</li>
+<li>Create a Set of allowed types [all the basic data types] and check if the extracted type is in the set</li>
+<li>Use a while loop to loop through from column 0 to the last column and collect the result.</li>
+<li>if the type is in the set, we return it. Or we return ‘object’</li>
+</ol>
+<h2 id="The-slove"><a href="#The-slove" class="headerlink" title="The slove"></a>The slove</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">any</span>&#125; <span class="variable">data</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">string</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">detectType</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> tag = <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(data).<span class="title function_">toLowerCase</span>();</span><br><span class="line">  <span class="keyword">const</span> matches = tag.<span class="title function_">match</span>(<span class="regexp">/^\[object\s(.*?)\]/</span>);</span><br><span class="line">  <span class="keyword">if</span> (matches) &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">type</span> = matches[<span class="number">1</span>];</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">type</span>)</span><br><span class="line">    <span class="keyword">const</span> allowedTypes = <span class="keyword">new</span> <span class="title class_">Set</span>([<span class="string">&quot;number&quot;</span>, <span class="string">&quot;bigint&quot;</span>, <span class="string">&quot;null&quot;</span>, <span class="string">&quot;string&quot;</span>, <span class="string">&quot;boolean&quot;</span>, <span class="string">&quot;symbol&quot;</span>, <span class="string">&quot;function&quot;</span>, <span class="string">&quot;undefined&quot;</span>, <span class="string">&quot;array&quot;</span>, <span class="string">&quot;date&quot;</span>, <span class="string">&quot;map&quot;</span>, <span class="string">&quot;set&quot;</span>, <span class="string">&quot;arraybuffer&quot;</span>]);</span><br><span class="line">    <span class="keyword">if</span>(allowedTypes.<span class="title function_">has</span>(<span class="keyword">type</span>)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">type</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;object&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/decode-message">https://bigfrontend.dev/problem/decode-message</a></p>
+</blockquote>
+
+        </div>
+    
+<!-- tags -->
+
+</div>
+                <div class="footer">
+    <!-- <span>Copyright © 2023 Julie&#39;s blogs</span>
+    <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> with <a target="_blank" rel="noopener" href="https:///imzl.com/zenmind">ZenMind</a></span> -->
+</div>
+
+<link rel="stylesheet" href="/blogs/css/a11y-dark.min.css">
+
+    
+<script src="/blogs/js/highlight.min.js"></script>
+
+        
+<script src="/blogs/js/highlightjs-line-numbers.js"></script>
+
+            <script>
+                hljs.initHighlightingOnLoad();
+                hljs.initLineNumbersOnLoad();
+            </script>
+            </div>
+        </div>
+    </body>
+</html>
