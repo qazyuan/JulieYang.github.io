@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>improve-a-function | Julie&#39;s blogs</title>
+
+  
+  <meta name="author" content="Julie">
+  
+
+  
+  <meta name="description" content="Problem Description1234567891011121314151617181920212223// Given an input of array,// which is made of items with &amp;gt;= 3 propertieslet items = [  &amp;#1">
+  
+
+  
+  
+  <meta name="keywords" content="">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="improve-a-function"/>
+
+  <meta property="og:site_name" content="Julie&#39;s blogs"/>
+
+  
+  <meta property="og:image" content="/blogs/favicon.ico"/>
+  
+
+  <link href="/blogs/favicon.ico" rel="icon">
+  <link rel="alternate" href="/blogs/atom.xml" title="Julie&#39;s blogs" type="application/atom+xml">
+  <link rel="stylesheet" href="/blogs/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/blogs/">Julie&#39;s blogs</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>improve-a-function</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blogs/2024/04/10/improve-a-function/" rel="bookmark">
+        <time class="entry-date published" datetime="2024-04-10T02:41:07.000Z">
+          2024-04-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// Given <span class="keyword">an</span> <span class="built_in">input</span> of array,</span><br><span class="line">// which <span class="keyword">is</span> made of <span class="built_in">items</span> with &gt;= <span class="number">3</span> properties</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="built_in">items</span> = [</span><br><span class="line">  &#123;color: <span class="string">&#x27;red&#x27;</span>, <span class="built_in">type</span>: <span class="string">&#x27;tv&#x27;</span>, age: <span class="number">18</span>&#125;,</span><br><span class="line">  &#123;color: <span class="string">&#x27;silver&#x27;</span>, <span class="built_in">type</span>: <span class="string">&#x27;phone&#x27;</span>, age: <span class="number">20</span>&#125;,</span><br><span class="line">  &#123;color: <span class="string">&#x27;blue&#x27;</span>, <span class="built_in">type</span>: <span class="string">&#x27;book&#x27;</span>, age: <span class="number">17</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">// <span class="keyword">an</span> exclude array made of key value pair</span><br><span class="line">const excludes = [</span><br><span class="line">  &#123;<span class="keyword">k</span>: <span class="string">&#x27;color&#x27;</span>, v: <span class="string">&#x27;silver&#x27;</span>&#125;,</span><br><span class="line">  &#123;<span class="keyword">k</span>: <span class="string">&#x27;type&#x27;</span>, v: <span class="string">&#x27;tv&#x27;</span>&#125;,</span><br><span class="line">  ...</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title">excludeItems</span><span class="params">(items, excludes)</span> &#123;</span><br><span class="line">  excludes.forEach( pair =&gt; &#123;</span><br><span class="line">    <span class="built_in">items</span> = <span class="built_in">items</span>.<span class="built_in">filter</span>(item =&gt; item[pair.<span class="keyword">k</span>] === item[pair.v])</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">items</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>What does this function excludeItems do?</p>
+</li>
+<li><p>Is this function working as expected ?</p>
+</li>
+<li><p>What is the time complexity of this function?</p>
+</li>
+<li><p>How would you optimize it ?</p>
+</li>
+</ol>
+<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>Our task is to filter the items based on the conditions specified in the<br>“exclude” array. For example, if the conditions are {“color”: “silver”} and<br>{“type”: “TV”}, then the item that matches both conditions (i.e., a silver TV)<br>would be excluded.</p>
+<p>But, as we’ll see, there’s a typo in the function that prevents it from working<br>as expected.</p>
+<p>The first thing we need to do is fix the typo in the function. Instead of<br>excluding items that match the conditions, the function is currently excluding<br>items that don’t match the conditions. To fix this, we need to change the <code>!==</code><br>operator to <code>===</code> in the if statement. Also the condition should be<br><code>item[pair.k] !== pair.v</code></p>
+<p>The optimized version of the excludeItems function still has a time complexity<br>of O(n * m), where n is the number of items in the items array and m is the<br>number of key-value pairs in the excludes array. However, the optimization lies<br>in the fact that it only iterates over the items array once, regardless of the<br>number of key-value pairs in the excludes array.</p>
+<p>The optimization involves creating a set of excluded properties and values<br>first, and then filtering the items array based on this set. By doing so, it<br>avoids iterating over the entire items array multiple times, which was the case<br>in the original implementation.</p>
+<p>The optimized version achieves better performance by iterating over the items<br>array only once and using a set to efficiently check for excluded properties and<br>values. This approach reduces the number of iterations and comparisons needed to<br>filter the items, leading to improved efficiency compared to the original<br>implementation.</p>
+<h2 id="The-resolve"><a href="#The-resolve" class="headerlink" title="The resolve"></a>The resolve</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">excludeItems</span>(items, exclude) &#123;</span><br><span class="line">  <span class="keyword">const</span> excludeMap = <span class="keyword">new </span><span class="class title_">Map</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> condition of exclude) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;<span class="built_in">key</span>, value&#125; = condition;</span><br><span class="line">    <span class="keyword">if</span> (!excludeMap.<span class="property">has</span>(<span class="built_in">key</span>)) &#123;</span><br><span class="line">      excludeMap.<span class="property">set</span>(<span class="built_in">key</span>, <span class="keyword">new </span><span class="class title_">Set</span>());</span><br><span class="line">    &#125;</span><br><span class="line">    excludeMap.<span class="property">get</span>(<span class="built_in">key</span>).<span class="property">add</span>(value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> items.<span class="property">filter</span>(item =&gt; &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> [<span class="built_in">key</span>, valueSet] of excludeMap.<span class="property">entries</span>()) &#123;</span><br><span class="line">      <span class="keyword">if</span> (valueSet.<span class="property">has</span>(item[<span class="built_in">key</span>])) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    <!-- Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a> -->
+    </br>
+    
+      &copy; 2024
+        Julie
+          
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>
