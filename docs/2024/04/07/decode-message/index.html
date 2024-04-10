@@ -1,84 +1,88 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-    <head>
+<head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-  <meta name="robots" content="index, follow">
-  <!-- title -->
   
-    
-  <title>decode-message - Julie&#39;s blogs</title>
-    
-  
-  
-  <!-- open graph -->
-  <meta name="description" content="Problem DescriptionYour are given a 2-D array of characters. There is a hidden message in it. 123I B C A L K AD R F C A E AG H O E L A D  The way to collect the message is as follows:  start at top le">
-<meta property="og:type" content="article">
-<meta property="og:title" content="decode-message">
-<meta property="og:url" content="https://qazyuan.github.io/blogs/2024/04/07/decode-message/index.html">
-<meta property="og:site_name" content="Julie&#39;s blogs">
-<meta property="og:description" content="Problem DescriptionYour are given a 2-D array of characters. There is a hidden message in it. 123I B C A L K AD R F C A E AG H O E L A D  The way to collect the message is as follows:  start at top le">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-04-07T08:19:12.000Z">
-<meta property="article:modified_time" content="2024-04-07T09:27:38.122Z">
-<meta property="article:author" content="Julie">
-<meta property="article:tag" content="js、array">
-<meta name="twitter:card" content="summary">
-  <!-- canonical -->
-  
-  <link rel="canonical" href="https://qazyuan.github.io/blogs/2024/04/07/decode-message/">
-  
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="/img/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-  <!-- CSS -->
-  
-<link rel="stylesheet" href="/blogs/css/reset.css">
+  <title>decode-message | Julie&#39;s blogs</title>
 
   
-<link rel="stylesheet" href="/blogs/css/style.css">
+  <meta name="author" content="Julie">
+  
 
   
-<link rel="stylesheet" href="/blogs/css/markdown.css">
+  <meta name="description" content="Problem DescriptionYour are given a 2-D array of characters. There is a hidden message in it.
+123I B C A L K AD R F C A E AG H O E L A D
+
+The way to c">
+  
 
   
-<link rel="stylesheet" href="/blogs/css/fonts.css">
+  
+  <meta name="keywords" content="js、array">
+  
 
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="decode-message"/>
+
+  <meta property="og:site_name" content="Julie&#39;s blogs"/>
+
+  
+  <meta property="og:image" content="/blogs/favicon.ico"/>
+  
+
+  <link href="/blogs/favicon.ico" rel="icon">
+  <link rel="alternate" href="/blogs/atom.xml" title="Julie&#39;s blogs" type="application/atom+xml">
+  <link rel="stylesheet" href="/blogs/css/style.css" media="screen" type="text/css">
 <meta name="generator" content="Hexo 7.1.1"></head>
 
-    <body>
-        <div class="paper">
-            <div class="paper-main">
-                
-                    <div class="post-header">
-    <a class="logo" href="/blogs/">Julie&#39;s blogs</a>
-    <!-- <div class="logo"><a href="/" title="Len"><img src="/img/logo.svg" alt="Len" aria-label="logo" height="20"></a></div> -->
-        <ul class="nav">
-            
-            <li><a href="/blogs/">Home</a></li>
-            
-        </ul>
 
+<body>
+<div class="blog">
+  <div class="content">
 
-    </a>
-</div>
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/blogs/">Julie&#39;s blogs</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
 
-                
-                <div class="post-main">
+    <main class="site-main posts-loop">
+    <article>
+
+  
     
-        <div class="post-main-title">
-            decode-message
-        </div>
-        <div class="post-meta">
-            2024-04-07 ｜ 
-            
-        </div>
-        <!-- 圆角分类 -->
-        <!-- <div class="tags"> -->
-            <!--  -->
-        <!-- </div> -->
-        <div class="post-md">
-            <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>Your are given a 2-D array of characters. There is a hidden message in it.</p>
+    <h3 class="article-title"><span>decode-message</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blogs/2024/04/07/decode-message/" rel="bookmark">
+        <time class="entry-date published" datetime="2024-04-07T08:19:12.000Z">
+          2024-04-07
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>Your are given a 2-D array of characters. There is a hidden message in it.</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">I</span> <span class="variable">B</span> <span class="built_in">C</span> <span class="variable">A</span> <span class="variable">L</span> <span class="built_in">K</span> <span class="variable">A</span></span><br><span class="line"><span class="built_in">D</span> <span class="variable">R</span> <span class="variable">F</span> <span class="built_in">C</span> <span class="variable">A</span> <span class="built_in">E</span> <span class="variable">A</span></span><br><span class="line"><span class="variable">G</span> <span class="variable">H</span> <span class="built_in">O</span> <span class="built_in">E</span> <span class="variable">L</span> <span class="variable">A</span> <span class="built_in">D</span></span><br></pre></td></tr></table></figure>
 
 <p>The way to collect the message is as follows:</p>
@@ -108,36 +112,57 @@
 <p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/decode-message">https://bigfrontend.dev/problem/decode-message</a></p>
 </blockquote>
 
-        </div>
-    
-<!-- tags -->
-
-    <div class="post-meta">
-        标签：
-        
-            <a href="/blogs/tags/js%E3%80%81array/"> / js、array</a>
-        
+      
     </div>
 
-</div>
-                <div class="footer">
-    <!-- <span>Copyright © 2023 Julie&#39;s blogs</span>
-    <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> with <a target="_blank" rel="noopener" href="https:///imzl.com/zenmind">ZenMind</a></span> -->
-</div>
+  </div>
 
-<link rel="stylesheet" href="/blogs/css/a11y-dark.min.css">
+  <div class="article-footer">
+    <div class="article-meta pull-left">
 
     
-<script src="/blogs/js/highlight.min.js"></script>
 
-        
-<script src="/blogs/js/highlightjs-line-numbers.js"></script>
+    
+    
 
-            <script>
-                hljs.initHighlightingOnLoad();
-                hljs.initLineNumbersOnLoad();
-            </script>
-            </div>
-        </div>
-    </body>
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/blogs/tags/js、array/">js、array</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    <!-- Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a> -->
+    </br>
+    
+      &copy; 2024
+        Julie
+          
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
 </html>
