@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>implement-once | Julie&#39;s blogs</title>
+
+  
+  <meta name="author" content="Julie">
+  
+
+  
+  <meta name="description" content="Problem Description_.once(func) is used to force a function to be called only once, later callsonly returns the result of first call.
+Can you implemen">
+  
+
+  
+  
+  <meta name="keywords" content="">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="implement-once"/>
+
+  <meta property="og:site_name" content="Julie&#39;s blogs"/>
+
+  
+  <meta property="og:image" content="/blogs/favicon.ico"/>
+  
+
+  <link href="/blogs/favicon.ico" rel="icon">
+  <link rel="alternate" href="/blogs/atom.xml" title="Julie&#39;s blogs" type="application/atom+xml">
+  <link rel="stylesheet" href="/blogs/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/blogs/">Julie&#39;s blogs</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>implement-once</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blogs/2024/04/10/implement-once/" rel="bookmark">
+        <time class="entry-date published" datetime="2024-04-10T07:58:39.000Z">
+          2024-04-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>_.once(func) is used to force a function to be called only once, later calls<br>only returns the result of first call.</p>
+<p>Can you implement your own once()?</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function <span class="built_in">func</span>(num) &#123;</span><br><span class="line">  return num</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const onced = <span class="built_in">once</span>(func)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">onced</span><span class="params">(<span class="number">1</span>)</span></span></span><br><span class="line"><span class="comment">// 1, func called with 1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">onced</span><span class="params">(<span class="number">2</span>)</span></span></span><br><span class="line"><span class="comment">// 1, even 2 is passed, previous result is returned</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>load-once is a technique used to ensure that a function is called only once.<br>Subsequent calls will return the result of the first call.</p>
+<p>So, we nedd to record whether the function is called and the result. It is an<br>easy question. Let’s do it.</p>
+<h2 id="The-resolve"><a href="#The-resolve" class="headerlink" title="The resolve"></a>The resolve</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">once</span><span class="params">(func)</span> &#123;</span><br><span class="line">    let result = <span class="literal">null</span>;</span><br><span class="line">    let isCalled = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span><span class="params">(<span class="rest_arg">...args</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(isCalled) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        result = func.call(<span class="keyword">this</span>, ...args);</span><br><span class="line">        isCalled = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/implement-once">https://bigfrontend.dev/problem/implement-once</a></p>
+</blockquote>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    <!-- Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a> -->
+    </br>
+    
+      &copy; 2024
+        Julie
+          
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>
