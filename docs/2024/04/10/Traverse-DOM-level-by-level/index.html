@@ -10,9 +10,8 @@
   
 
   
-  <meta name="description" content="title: improve-a-function date: 2024-04-10 10:41:07 tags:
-
-Problem DescriptionGiven a DOM tree, flatten it into an one dimensional array, in the order">
+  <meta name="description" content="Problem DescriptionGiven a DOM tree, flatten it into an one dimensional array, in the order oflayer by layer, like below.
+The SolutionWe need to trave">
   
 
   
@@ -81,10 +80,7 @@ Problem DescriptionGiven a DOM tree, flatten it into an one dimensional array, i
   <div class="article-content">
     <div class="entry">
       
-        <hr>
-<p>title: improve-a-function date: 2024-04-10 10:41:07 tags:</p>
-<hr>
-<h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>Given a DOM tree, flatten it into an one dimensional array, in the order of<br>layer by layer, like below.<br><img src="https://cdn.bfe.dev/bfe/img/ykqFdOIOaXFyn2uZ8h5Lt02sFaYb5eZ8_1063x546_1598232821941.png"></p>
+        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>Given a DOM tree, flatten it into an one dimensional array, in the order of<br>layer by layer, like below.<br><img src="https://cdn.bfe.dev/bfe/img/ykqFdOIOaXFyn2uZ8h5Lt02sFaYb5eZ8_1063x546_1598232821941.png"></p>
 <h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>We need to traverse it level by level, resulting in this array:<br><code>[div, p, p, div, a, img, button]</code></p>
 <p>This problem is a typical BFS (Breadth-First Search) problem, which we can solve<br>using a queue. Here’s a step-by-step approach:</p>
 <ol>

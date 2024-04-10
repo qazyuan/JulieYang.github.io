@@ -4,12 +4,6 @@ date: 2024-04-10 15:22:57
 tags:
 ---
 
----
-
-title: improve-a-function date: 2024-04-10 10:41:07 tags:
-
----
-
 ## Problem Description
 
 Given a DOM tree, flatten it into an one dimensional array, in the order of
