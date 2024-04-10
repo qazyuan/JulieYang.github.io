@@ -55,6 +55,67 @@
 
   
     
+    <h3 class="article-title"><a href="/blogs/2024/04/10/promisify/"><span>promisify</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blogs/2024/04/10/promisify/" rel="bookmark">
+        <time class="entry-date published" datetime="2024-04-10T08:24:31.000Z">
+          2024-04-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>Let’s take a look at following error-first callback.</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const callback = <span class="function"><span class="params">(<span class="built_in">error</span>, data)</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">error</span>) &#123;</span><br><span class="line">    // handle the <span class="built_in">error</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    // handle the data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now think about async functions that takes above error-first callback as last<br>argument.</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const func = <span class="function"><span class="params">(arg1, arg2, callback)</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="regexp">//</span> some <span class="keyword">async</span> logic</span><br><span class="line">  <span class="keyword">if</span> (hasError) &#123;</span><br><span class="line">    callback(someError)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    callback(<span class="literal">null</span>, someData)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>You see what needs to be done now. Please implement promisify() to make the code<br>better.</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const promisedFunc = promisify(func)</span><br><span class="line"></span><br><span class="line">promisedFunc().<span class="keyword">then</span>(<span class="function"><span class="params">(data)</span> =&gt;</span> &#123;</span><br><span class="line">  // handles data</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">(<span class="built_in">error</span>)</span> =&gt;</span> &#123;</span><br><span class="line">  // handles <span class="built_in">error</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>Our goal is to convert this callback-based function into a promise-based one.</p>
+<p>The promisify function converts the error-first callback pattern to a<br>promise-based API. It returns a new function that produces a promise. When the<br>promise is resolved, we get the data. If it’s rejected, it has the error.</p>
+<h2 id="The-resolve"><a href="#The-resolve" class="headerlink" title="The resolve"></a>The resolve</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;(...args) =&gt; void&#125; func</span></span><br><span class="line"><span class="comment"> * @returns &#123;(...args) =&gt; Promise&lt;any&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">promisify</span><span class="params">(func)</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span><span class="params">(<span class="rest_arg">...args</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Promise((resolve, reject) =&gt;&#123;</span><br><span class="line">    func.call(<span class="keyword">this</span>, ...args, (error, data) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span>(error) &#123;</span><br><span class="line">        reject(error)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        resolve(data)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/promisify">https://bigfrontend.dev/problem/promisify</a></p>
+</blockquote>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/blogs/2024/04/10/implement-once/"><span>implement-once</span></a></h3>
     
   
