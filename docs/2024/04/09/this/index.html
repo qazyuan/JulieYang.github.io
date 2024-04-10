@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+  <meta name="robots" content="index, follow">
+  <!-- title -->
+  
+    
+  <title>this - Julie&#39;s blogs</title>
+    
+  
+  
+  <!-- open graph -->
+  <meta name="description" content="Problem DescriptionWhat does the code snippet to the output by console.log 12345678910111213141516171819202122232425262728293031323334353637383940const obj &#x3D; &#123;	a: 1,	b: function () &#123;		consol">
+<meta property="og:type" content="article">
+<meta property="og:title" content="this">
+<meta property="og:url" content="https://qazyuan.github.io/blogs/2024/04/09/this/index.html">
+<meta property="og:site_name" content="Julie&#39;s blogs">
+<meta property="og:description" content="Problem DescriptionWhat does the code snippet to the output by console.log 12345678910111213141516171819202122232425262728293031323334353637383940const obj &#x3D; &#123;	a: 1,	b: function () &#123;		consol">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-09T07:44:19.000Z">
+<meta property="article:modified_time" content="2024-04-10T02:08:05.260Z">
+<meta property="article:author" content="Julie">
+<meta name="twitter:card" content="summary">
+  <!-- canonical -->
+  
+  <link rel="canonical" href="https://qazyuan.github.io/blogs/2024/04/09/this/">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <!-- CSS -->
+  
+<link rel="stylesheet" href="/blogs/css/reset.css">
+
+  
+<link rel="stylesheet" href="/blogs/css/style.css">
+
+  
+<link rel="stylesheet" href="/blogs/css/markdown.css">
+
+  
+<link rel="stylesheet" href="/blogs/css/fonts.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+    <body>
+        <div class="paper">
+            <div class="paper-main">
+                
+                    <div class="post-header">
+    <a class="logo" href="/blogs/">Julie&#39;s blogs</a>
+    <!-- <div class="logo"><a href="/" title="Len"><img src="/img/logo.svg" alt="Len" aria-label="logo" height="20"></a></div> -->
+        <ul class="nav">
+            
+            <li><a href="/blogs/">Home</a></li>
+            
+        </ul>
+
+
+    </a>
+</div>
+
+                
+                <div class="post-main">
+    
+        <div class="post-main-title">
+            this
+        </div>
+        <div class="post-meta">
+            2024-04-09 ｜ 
+            
+        </div>
+        <!-- 圆角分类 -->
+        <!-- <div class="tags"> -->
+            <!--  -->
+        <!-- </div> -->
+        <div class="post-md">
+            <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>What does the code snippet to the output by <code>console.log</code></p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">	<span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">	<span class="attr">b</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">		<span class="built_in">console</span>.<span class="built_in">log</span>(this.a);</span><br><span class="line">	&#125;,</span><br><span class="line">	c() &#123;</span><br><span class="line">		<span class="built_in">console</span>.<span class="built_in">log</span>(this.a);</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">d</span>: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.<span class="built_in">log</span>(this.a);</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">e</span>: (<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.<span class="built_in">log</span>(this.a);</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;)(),</span><br><span class="line">	<span class="attr">f</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.<span class="built_in">log</span>(this.a);</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">console</span>.<span class="built_in">log</span>(obj.a);</span><br><span class="line">	obj.b();</span><br><span class="line">	;(obj.b)();</span><br><span class="line"></span><br><span class="line">	const b = obj.b;</span><br><span class="line">	b();</span><br><span class="line">	obj.b.apply(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line">	obj.c();</span><br><span class="line">	obj.d();</span><br><span class="line">	;(obj.d)();</span><br><span class="line">	obj.d.apply(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line">	obj.e();</span><br><span class="line">	;(obj.e)();</span><br><span class="line">	obj.e.call(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line">	obj.f()();</span><br><span class="line">	;(obj.f())();</span><br><span class="line">	obj.f().call(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><ul>
+<li><p><code>const b = obj.b; b(); // undefined</code></p>
+<p>lose this binding</p>
+</li>
+<li><p><code>obj.b.apply(&#123; a: 2 &#125;); </code></p>
+<p>this will be altered into <code>&#123;a:2&#125;</code>, note that the origin <code>obj.a</code> will not be<br>altered.</p>
+</li>
+<li><p><code>obj.c(); //1</code></p>
+</li>
+<li><p><code>obj.d(); // undefined</code></p>
+<p>arrow function, this is actually window</p>
+</li>
+<li><p><code>;(obj.d)(); // undefined</code></p>
+</li>
+<li><p><code>obj.d.apply(&#123; a: 2 &#125;); // undefined</code></p>
+<p>This behavior occurs because <code>obj.d</code> is an arrow function. Arrow functions do<br>not bind their own this context but inherit it from the surrounding lexical<br>context where they were defined. In this case, since <code>obj.d</code> is defined within<br>the object <code>obj</code>, the arrow function <code>d</code> retains the this value from the<br>surrounding context, which is the global object.</p>
+</li>
+<li><p><code>obj.e();</code> <code>;(obj.e)();</code> <code>obj.e.call(&#123; a: 2 &#125;);</code></p>
+<p>In the case of <code>obj.e</code>, the arrow function is created inside _ an immediately<br>invoked function expression (IIFE) _. Arrow functions inherit this from the<br>surrounding lexical context where they are defined. In this scenario, the<br>arrow function inside <code>obj.e</code> will capture the this value of the surrounding<br>context, which is the global object (typically window in a browser<br>environment).</p>
+<p>Therefore, when <code>obj.e</code> is invoked, the this keyword inside the arrow function<br>will refer to the global object, maintaining the same this reference as the<br>surrounding context where the arrow function was defined.</p>
+<p>In summary, when executing <code>obj.e</code>, the this keyword inside the arrow function<br>defined within <code>obj.e</code> will point to the global object (window in a browser<br>environment) due to the lexical scoping behavior of arrow functions.<br>immediately function, return the arrow function just as the <code>d()</code>, so this is<br>also points to the Window</p>
+</li>
+<li><p><code>obj.f()(); </code> <code>;(obj.f())();</code> <code>obj.f().call(&#123; a: 2 &#125;);</code></p>
+<p>When invoking <code>obj.f()()</code>, the this keyword inside the arrow function returned<br>by <code>obj.f() </code> will refer to the object <code>obj</code>. This behavior occurs because the<br>arrow function inherits its this value from the surrounding lexical context<br>where it was defined, which is the object <code>obj</code> in this case.</p>
+<p>Therefore, when <code>obj.f()()</code> is executed, the this keyword inside the arrow<br>function will maintain its reference to the object <code>obj</code>, as it inherits the<br>this value from the lexical scope in which it was created.</p>
+<p>In summary, when calling <code>obj.f()()</code>, the this keyword inside the arrow<br>function returned by <code>obj.f()</code> will point to the object obj.</p>
+</li>
+</ul>
+<h2 id="The-result"><a href="#The-result" class="headerlink" title="The result"></a>The result</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">a</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line">obj.<span class="title function_">b</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line">obj.<span class="title function_">b</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">const</span> b = obj.<span class="property">b</span>;</span><br><span class="line"><span class="title function_">b</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line">obj.<span class="property">b</span>.<span class="title function_">apply</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">obj.<span class="title function_">c</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line">obj.<span class="title function_">d</span>();</span><br><span class="line">obj.<span class="title function_">d</span>();</span><br><span class="line">obj.<span class="property">d</span>.<span class="title function_">apply</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line">obj.<span class="title function_">e</span>();</span><br><span class="line">obj.<span class="title function_">e</span>();</span><br><span class="line">obj.<span class="property">e</span>.<span class="title function_">call</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">obj.<span class="title function_">f</span>()();</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">obj.<span class="title function_">f</span>()();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">obj.<span class="title function_">f</span>().<span class="title function_">call</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+        </div>
+    
+<!-- tags -->
+
+</div>
+                <div class="footer">
+    <!-- <span>Copyright © 2023 Julie&#39;s blogs</span>
+    <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> with <a target="_blank" rel="noopener" href="https:///imzl.com/zenmind">ZenMind</a></span> -->
+</div>
+
+<link rel="stylesheet" href="/blogs/css/a11y-dark.min.css">
+
+    
+<script src="/blogs/js/highlight.min.js"></script>
+
+        
+<script src="/blogs/js/highlightjs-line-numbers.js"></script>
+
+            <script>
+                hljs.initHighlightingOnLoad();
+                hljs.initLineNumbersOnLoad();
+            </script>
+            </div>
+        </div>
+    </body>
+</html>
