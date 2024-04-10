@@ -55,6 +55,72 @@
 
   
     
+    <h3 class="article-title"><a href="/blogs/2024/04/10/Traverse-DOM-level-by-level/"><span>Traverse-DOM-level-by-level</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blogs/2024/04/10/Traverse-DOM-level-by-level/" rel="bookmark">
+        <time class="entry-date published" datetime="2024-04-10T07:22:57.000Z">
+          2024-04-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <hr>
+<p>title: improve-a-function date: 2024-04-10 10:41:07 tags:</p>
+<hr>
+<h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>Given a DOM tree, flatten it into an one dimensional array, in the order of<br>layer by layer, like below.<br><img src="https://cdn.bfe.dev/bfe/img/ykqFdOIOaXFyn2uZ8h5Lt02sFaYb5eZ8_1063x546_1598232821941.png"></p>
+<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>We need to traverse it level by level, resulting in this array:<br><code>[div, p, p, div, a, img, button]</code></p>
+<p>This problem is a typical BFS (Breadth-First Search) problem, which we can solve<br>using a queue. Here’s a step-by-step approach:</p>
+<ol>
+<li><p>Create a queue and add the root to it.</p>
+</li>
+<li><p>While the queue is not empty, shift the head out and add it to the result.</p>
+</li>
+<li><p>Add the children of the current node to the queue.</p>
+</li>
+<li><p>Repeat steps 2-3 until the queue is empty.</p>
+</li>
+</ol>
+<h2 id="The-resolve"><a href="#The-resolve" class="headerlink" title="The resolve"></a>The resolve</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">traverseDOM</span><span class="params">(root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root) <span class="keyword">return</span> [];</span><br><span class="line"></span><br><span class="line">  <span class="type">const</span> result = [];</span><br><span class="line">  <span class="type">const</span> queue = [root];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (queue.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="type">const</span> current = queue.<span class="built_in">shift</span>();</span><br><span class="line">    result.<span class="built_in">push</span>(current);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (current.children) &#123;</span><br><span class="line">      <span class="keyword">for</span> (let child of current.children) &#123;</span><br><span class="line">        queue.<span class="built_in">push</span>(child);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/Traverse-DOM-level-by-level">https://bigfrontend.dev/problem/Traverse-DOM-level-by-level</a></p>
+</blockquote>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/blogs/2024/04/10/improve-a-function/"><span>improve-a-function</span></a></h3>
     
   
@@ -94,6 +160,10 @@
 <p>The optimization involves creating a set of excluded properties and values<br>first, and then filtering the items array based on this set. By doing so, it<br>avoids iterating over the entire items array multiple times, which was the case<br>in the original implementation.</p>
 <p>The optimized version achieves better performance by iterating over the items<br>array only once and using a set to efficiently check for excluded properties and<br>values. This approach reduces the number of iterations and comparisons needed to<br>filter the items, leading to improved efficiency compared to the original<br>implementation.</p>
 <h2 id="The-resolve"><a href="#The-resolve" class="headerlink" title="The resolve"></a>The resolve</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">excludeItems</span>(items, exclude) &#123;</span><br><span class="line">  <span class="keyword">const</span> excludeMap = <span class="keyword">new </span><span class="class title_">Map</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> condition of exclude) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;<span class="built_in">key</span>, value&#125; = condition;</span><br><span class="line">    <span class="keyword">if</span> (!excludeMap.<span class="property">has</span>(<span class="built_in">key</span>)) &#123;</span><br><span class="line">      excludeMap.<span class="property">set</span>(<span class="built_in">key</span>, <span class="keyword">new </span><span class="class title_">Set</span>());</span><br><span class="line">    &#125;</span><br><span class="line">    excludeMap.<span class="property">get</span>(<span class="built_in">key</span>).<span class="property">add</span>(value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> items.<span class="property">filter</span>(item =&gt; &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> [<span class="built_in">key</span>, valueSet] of excludeMap.<span class="property">entries</span>()) &#123;</span><br><span class="line">      <span class="keyword">if</span> (valueSet.<span class="property">has</span>(item[<span class="built_in">key</span>])) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/improve-a-function">https://bigfrontend.dev/problem/improve-a-function</a></p>
+</blockquote>
 
       
     </div>
@@ -171,6 +241,10 @@
 </li>
 </ul>
 <h2 id="The-result"><a href="#The-result" class="headerlink" title="The result"></a>The result</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">a</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line">obj.<span class="title function_">b</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line">obj.<span class="title function_">b</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">const</span> b = obj.<span class="property">b</span>;</span><br><span class="line"><span class="title function_">b</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line">obj.<span class="property">b</span>.<span class="title function_">apply</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">obj.<span class="title function_">c</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line">obj.<span class="title function_">d</span>();</span><br><span class="line">obj.<span class="title function_">d</span>();</span><br><span class="line">obj.<span class="property">d</span>.<span class="title function_">apply</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line">obj.<span class="title function_">e</span>();</span><br><span class="line">obj.<span class="title function_">e</span>();</span><br><span class="line">obj.<span class="property">e</span>.<span class="title function_">call</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">obj.<span class="title function_">f</span>()();</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">obj.<span class="title function_">f</span>()();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">obj.<span class="title function_">f</span>().<span class="title function_">call</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/quiz/this">https://bigfrontend.dev/quiz/this</a></p>
+</blockquote>
 
       
     </div>

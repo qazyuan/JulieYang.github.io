@@ -96,3 +96,5 @@ function excludeItems(items, exclude) {
   });
 }
 ```
+
+> 该题目来自https://bigfrontend.dev/problem/improve-a-function

@@ -151,3 +151,5 @@ obj.f()();
 // 1
 obj.f().call({ a: 2 });
 ```
+
+> 该题目来自https://bigfrontend.dev/quiz/this
