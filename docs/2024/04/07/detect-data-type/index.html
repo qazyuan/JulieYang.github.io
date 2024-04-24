@@ -1,86 +1,160 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang=en>
 <head>
-  <meta charset="utf-8">
-  
-  <title>detect-data-type | Julie&#39;s blogs</title>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Problem DescriptionThis is an easy problem. For all the basic data types in JavaScript, how could you write a function to detect the type of arbitrary data? Besides basic types, you need to also handl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="detect-data-type">
+<meta property="og:url" content="https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/index.html">
+<meta property="og:site_name" content="Julie&#39;s blogs">
+<meta property="og:description" content="Problem DescriptionThis is an easy problem. For all the basic data types in JavaScript, how could you write a function to detect the type of arbitrary data? Besides basic types, you need to also handl">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-07T09:44:30.000Z">
+<meta property="article:modified_time" content="2024-04-09T07:32:39.688Z">
+<meta property="article:author" content="Julie">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/blogs/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/blogs/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/blogs/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>detect-data-type</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
-  
-  <meta name="author" content="Julie">
-  
 
-  
-  <meta name="description" content="Problem DescriptionThis is an easy problem.
-For all the basic data types in JavaScript, how could you write a function to detect the type of arbitrary">
-  
+    <!-- Umami Analytics -->
 
-  
-  
-  <meta name="keywords" content="">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blogs/css/style.css">
 
-  <meta property="og:title" content="detect-data-type"/>
-
-  <meta property="og:site_name" content="Julie&#39;s blogs"/>
-
-  
-  <meta property="og:image" content="/blogs/favicon.ico"/>
-  
-
-  <link href="/blogs/favicon.ico" rel="icon">
-  <link rel="alternate" href="/blogs/atom.xml" title="Julie&#39;s blogs" type="application/atom+xml">
-  <link rel="stylesheet" href="/blogs/css/style.css" media="screen" type="text/css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
 <meta name="generator" content="Hexo 7.1.1"></head>
 
-
-<body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/blogs/">Julie&#39;s blogs</a>
-    </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+<body class="max-width mx-auto px3 ltr">
     
-    <h3 class="article-title"><span>detect-data-type</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/blogs/2024/04/07/detect-data-type/" rel="bookmark">
-        <time class="entry-date published" datetime="2024-04-07T09:44:30.000Z">
-          2024-04-07
-        </time>
-      </a>
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/blogs/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blogs/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blogs/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
     </span>
-  </div>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/blogs/2024/04/09/this/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/blogs/2024/04/07/decode-message/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&text=detect-data-type"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&title=detect-data-type"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&is_video=false&description=detect-data-type"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=detect-data-type&body=Check out this article: https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&title=detect-data-type"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&title=detect-data-type"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&title=detect-data-type"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&title=detect-data-type"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&name=detect-data-type&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&t=detect-data-type"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-Description"><span class="toc-number">1.</span> <span class="toc-text">Problem Description</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Solution"><span class="toc-number">2.</span> <span class="toc-text">The Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-slove"><span class="toc-number">3.</span> <span class="toc-text">The slove</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        detect-data-type
+    </h1>
 
 
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Julie</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-07T09:44:30.000Z" class="dt-published" itemprop="datePublished">2024-04-07</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
   
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>This is an easy problem.</p>
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>This is an easy problem.</p>
 <p>For <a target="_blank" rel="noopener" href="https://javascript.info/types" title="null">all the basic data types</a> in JavaScript, how could you write a function to detect the type of arbitrary data?</p>
 <p>Besides basic types, you need to also handle also commonly used complex data type including <code>Array</code>, <code>ArrayBuffer</code>, <code>Map</code>, <code>Set</code>, <code>Date</code> and <code>Function</code></p>
 <p>The goal is not to list up all the data types but to show us how to solve the problem when we need to.</p>
@@ -101,50 +175,143 @@ For all the basic data types in JavaScript, how could you write a function to de
 <p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/decode-message">https://bigfrontend.dev/problem/decode-message</a></p>
 </blockquote>
 
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-
-    </div>
-
-    
   </div>
 </article>
 
-  
 
 
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
 
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/blogs/">Home</a></li>
+        
+          <li><a href="/blogs/about/">About</a></li>
+        
+          <li><a href="/blogs/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
 
-
-
-
-
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    <!-- Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a> -->
-    </br>
-    
-      &copy; 2024
-        Julie
-          
-  </p>
-</footer>
     
     
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-Description"><span class="toc-number">1.</span> <span class="toc-text">Problem Description</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Solution"><span class="toc-number">2.</span> <span class="toc-text">The Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-slove"><span class="toc-number">3.</span> <span class="toc-text">The slove</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&text=detect-data-type"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&title=detect-data-type"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&is_video=false&description=detect-data-type"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=detect-data-type&body=Check out this article: https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&title=detect-data-type"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&title=detect-data-type"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&title=detect-data-type"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&title=detect-data-type"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&name=detect-data-type&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/&t=detect-data-type"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
   </div>
 </div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    Julie
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/blogs/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blogs/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blogs/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/blogs/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
 </body>
 </html>

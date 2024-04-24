@@ -1,88 +1,164 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang=en>
 <head>
-  <meta charset="utf-8">
-  
-  <title>decode-message | Julie&#39;s blogs</title>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Problem DescriptionYour are given a 2-D array of characters. There is a hidden message in it. 123I B C A L K AD R F C A E AG H O E L A D  The way to collect the message is as follows:  start at top le">
+<meta property="og:type" content="article">
+<meta property="og:title" content="decode-message">
+<meta property="og:url" content="https://qazyuan.github.io/blogs/2024/04/07/decode-message/index.html">
+<meta property="og:site_name" content="Julie&#39;s blogs">
+<meta property="og:description" content="Problem DescriptionYour are given a 2-D array of characters. There is a hidden message in it. 123I B C A L K AD R F C A E AG H O E L A D  The way to collect the message is as follows:  start at top le">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-07T08:19:12.000Z">
+<meta property="article:modified_time" content="2024-04-07T09:27:38.122Z">
+<meta property="article:author" content="Julie">
+<meta property="article:tag" content="js、array">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/blogs/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/blogs/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/blogs/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>decode-message</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
-  
-  <meta name="author" content="Julie">
-  
 
-  
-  <meta name="description" content="Problem DescriptionYour are given a 2-D array of characters. There is a hidden message in it.
-123I B C A L K AD R F C A E AG H O E L A D
+    <!-- Umami Analytics -->
 
-The way to c">
-  
 
-  
-  
-  <meta name="keywords" content="js、array">
-  
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blogs/css/style.css">
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <meta property="og:title" content="decode-message"/>
-
-  <meta property="og:site_name" content="Julie&#39;s blogs"/>
-
-  
-  <meta property="og:image" content="/blogs/favicon.ico"/>
-  
-
-  <link href="/blogs/favicon.ico" rel="icon">
-  <link rel="alternate" href="/blogs/atom.xml" title="Julie&#39;s blogs" type="application/atom+xml">
-  <link rel="stylesheet" href="/blogs/css/style.css" media="screen" type="text/css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
 <meta name="generator" content="Hexo 7.1.1"></head>
 
-
-<body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/blogs/">Julie&#39;s blogs</a>
-    </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-    </ul>
-  </nav>
-</header>
-
-    <main class="site-main posts-loop">
-    <article>
-
-  
+<body class="max-width mx-auto px3 ltr">
     
-    <h3 class="article-title"><span>decode-message</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/blogs/2024/04/07/decode-message/" rel="bookmark">
-        <time class="entry-date published" datetime="2024-04-07T08:19:12.000Z">
-          2024-04-07
-        </time>
-      </a>
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/blogs/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blogs/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blogs/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
     </span>
-  </div>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/blogs/2024/04/07/detect-data-type/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://qazyuan.github.io/blogs/2024/04/07/decode-message/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&text=decode-message"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&title=decode-message"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&is_video=false&description=decode-message"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=decode-message&body=Check out this article: https://qazyuan.github.io/blogs/2024/04/07/decode-message/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&title=decode-message"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&title=decode-message"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&title=decode-message"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&title=decode-message"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&name=decode-message&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&t=decode-message"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-Description"><span class="toc-number">1.</span> <span class="toc-text">Problem Description</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Solution"><span class="toc-number">2.</span> <span class="toc-text">The Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Edge-Cases"><span class="toc-number">3.</span> <span class="toc-text">Edge Cases</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-slove"><span class="toc-number">4.</span> <span class="toc-text">The slove</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        decode-message
+    </h1>
 
 
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Julie</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-07T08:19:12.000Z" class="dt-published" itemprop="datePublished">2024-04-07</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/blogs/tags/js%E3%80%81array/" rel="tag">js、array</a>
+    </div>
+
+
+    </div>
+  </header>
   
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>Your are given a 2-D array of characters. There is a hidden message in it.</p>
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>Your are given a 2-D array of characters. There is a hidden message in it.</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">I</span> <span class="variable">B</span> <span class="built_in">C</span> <span class="variable">A</span> <span class="variable">L</span> <span class="built_in">K</span> <span class="variable">A</span></span><br><span class="line"><span class="built_in">D</span> <span class="variable">R</span> <span class="variable">F</span> <span class="built_in">C</span> <span class="variable">A</span> <span class="built_in">E</span> <span class="variable">A</span></span><br><span class="line"><span class="variable">G</span> <span class="variable">H</span> <span class="built_in">O</span> <span class="built_in">E</span> <span class="variable">L</span> <span class="variable">A</span> <span class="built_in">D</span></span><br></pre></td></tr></table></figure>
 
 <p>The way to collect the message is as follows:</p>
@@ -112,57 +188,143 @@ The way to c">
 <p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/decode-message">https://bigfrontend.dev/problem/decode-message</a></p>
 </blockquote>
 
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/blogs/tags/js、array/">js、array</a>
-    </span>
-    
-
-    </div>
-
-    
   </div>
 </article>
 
-  
 
 
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
 
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/blogs/">Home</a></li>
+        
+          <li><a href="/blogs/about/">About</a></li>
+        
+          <li><a href="/blogs/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
 
-
-
-
-
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    <!-- Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a> -->
-    </br>
-    
-      &copy; 2024
-        Julie
-          
-  </p>
-</footer>
     
     
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-Description"><span class="toc-number">1.</span> <span class="toc-text">Problem Description</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Solution"><span class="toc-number">2.</span> <span class="toc-text">The Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Edge-Cases"><span class="toc-number">3.</span> <span class="toc-text">Edge Cases</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-slove"><span class="toc-number">4.</span> <span class="toc-text">The slove</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://qazyuan.github.io/blogs/2024/04/07/decode-message/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&text=decode-message"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&title=decode-message"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&is_video=false&description=decode-message"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=decode-message&body=Check out this article: https://qazyuan.github.io/blogs/2024/04/07/decode-message/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&title=decode-message"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&title=decode-message"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&title=decode-message"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&title=decode-message"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&name=decode-message&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://qazyuan.github.io/blogs/2024/04/07/decode-message/&t=decode-message"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
   </div>
 </div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    Julie
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/blogs/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blogs/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blogs/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/blogs/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
 </body>
 </html>

@@ -5,7 +5,15 @@
 # Site
 title: Julie's blogs
 subtitle: ""
-description: ""
+description:
+  "Hi, this is Julie. Welcome </br></br> My proficiency extends to HTML5 and
+  CSS, where I've honed my craft in developing responsive layouts that provide
+  an optimal user experience across all platforms, from mobile to desktop.
+  </br></br> I possess an in-depth understanding of the Vue framework, including
+  both Vue 2 and Vue 3. And I am adept at utilizing the latest ES6 features,
+  writing clean and standardized code that aligns with industry best
+  practices.</br></br> If you have anything you want to discuss with me, welcome
+  to contact me."
 keywords:
 author: Julie
 language: en
@@ -103,7 +111,9 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 # theme: ZenMind
-theme: Hacker
+theme: cactus
+theme_config:
+  colorscheme: white
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

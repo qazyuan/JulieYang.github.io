@@ -1,614 +1,328 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang=en>
 <head>
-  <meta charset="utf-8">
-  
-  <title>Julie&#39;s blogs</title>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Julie&#39;s blogs">
+<meta property="og:url" content="https://qazyuan.github.io/blogs/index.html">
+<meta property="og:site_name" content="Julie&#39;s blogs">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Julie">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/blogs/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/blogs/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/blogs/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Julie&#39;s blogs</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
-  
-  <meta name="author" content="Julie">
-  
 
-  
+    <!-- Umami Analytics -->
 
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blogs/css/style.css">
 
-  
-
-  <meta property="og:site_name" content="Julie&#39;s blogs"/>
-
-  
-  <meta property="og:image" content="/blogs/favicon.ico"/>
-  
-
-  <link href="/blogs/favicon.ico" rel="icon">
-  <link rel="alternate" href="/blogs/atom.xml" title="Julie&#39;s blogs" type="application/atom+xml">
-  <link rel="stylesheet" href="/blogs/css/style.css" media="screen" type="text/css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
 <meta name="generator" content="Hexo 7.1.1"></head>
 
-
-<body>
-<div class="blog">
-  <div class="content">
-
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/blogs/">Julie&#39;s blogs</a>
-    </h1>
-    <p class="site-description"></p>
-  </div>
-  <nav class="site-navigation">
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4 h-card">
+        
+          <header id="header">
+  <a class="u-url u-uid" href="/blogs/">
+  
+    
+      <img id="logo" alt class="u-logo" src="/blogs/images/logo.png" />
+    
+  
+    <div id="title">
+      <h1 class="p-name">Julie&#39;s blogs</h1>
+    </div>
+  </a>
+  <div id="nav">
     <ul>
-      
+      <li class="icon">
+        <a href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-2x"></i></a>
+      </li>
+      <!--
+     --><li><a href="/blogs/">Home</a></li><!--
+   --><!--
+     --><li><a href="/blogs/about/">About</a></li><!--
+   --><!--
+     --><li><a href="/blogs/archives/">Writing</a></li><!--
+   --><!--
+     --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+   -->
     </ul>
-  </nav>
+  </div>
 </header>
 
-    <main class="site-main posts-loop">
-    
-  <article>
-
+        
+        <section id="about" class="p-note">
   
-    
-    <h3 class="article-title"><a href="/blogs/2024/04/10/promisify/"><span>promisify</span></a></h3>
-    
   
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/blogs/2024/04/10/promisify/" rel="bookmark">
-        <time class="entry-date published" datetime="2024-04-10T08:24:31.000Z">
-          2024-04-10
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
+    <p>
+      Find me on
       
-        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>Let’s take a look at following error-first callback.</p>
-<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const callback = <span class="function"><span class="params">(<span class="built_in">error</span>, data)</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">error</span>) &#123;</span><br><span class="line">    // handle the <span class="built_in">error</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    // handle the data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Now think about async functions that takes above error-first callback as last<br>argument.</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const func = <span class="function"><span class="params">(arg1, arg2, callback)</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="regexp">//</span> some <span class="keyword">async</span> logic</span><br><span class="line">  <span class="keyword">if</span> (hasError) &#123;</span><br><span class="line">    callback(someError)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    callback(<span class="literal">null</span>, someData)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>You see what needs to be done now. Please implement promisify() to make the code<br>better.</p>
-<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const promisedFunc = promisify(func)</span><br><span class="line"></span><br><span class="line">promisedFunc().<span class="keyword">then</span>(<span class="function"><span class="params">(data)</span> =&gt;</span> &#123;</span><br><span class="line">  // handles data</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">(<span class="built_in">error</span>)</span> =&gt;</span> &#123;</span><br><span class="line">  // handles <span class="built_in">error</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>Our goal is to convert this callback-based function into a promise-based one.</p>
-<p>The promisify function converts the error-first callback pattern to a<br>promise-based API. It returns a new function that produces a promise. When the<br>promise is resolved, we get the data. If it’s rejected, it has the error.</p>
-<h2 id="The-resolve"><a href="#The-resolve" class="headerlink" title="The resolve"></a>The resolve</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;(...args) =&gt; void&#125; func</span></span><br><span class="line"><span class="comment"> * @returns &#123;(...args) =&gt; Promise&lt;any&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">promisify</span><span class="params">(func)</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span><span class="params">(<span class="rest_arg">...args</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Promise((resolve, reject) =&gt;&#123;</span><br><span class="line">    func.call(<span class="keyword">this</span>, ...args, (error, data) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span>(error) &#123;</span><br><span class="line">        reject(error)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        resolve(data)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/promisify">https://bigfrontend.dev/problem/promisify</a></p>
-</blockquote>
-
       
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/blogs/2024/04/10/implement-once/"><span>implement-once</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/blogs/2024/04/10/implement-once/" rel="bookmark">
-        <time class="entry-date published" datetime="2024-04-10T07:58:39.000Z">
-          2024-04-10
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
       
-        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>_.once(func) is used to force a function to be called only once, later calls<br>only returns the result of first call.</p>
-<p>Can you implement your own once()?</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function <span class="built_in">func</span>(num) &#123;</span><br><span class="line">  return num</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const onced = <span class="built_in">once</span>(func)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">onced</span><span class="params">(<span class="number">1</span>)</span></span></span><br><span class="line"><span class="comment">// 1, func called with 1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">onced</span><span class="params">(<span class="number">2</span>)</span></span></span><br><span class="line"><span class="comment">// 1, even 2 is passed, previous result is returned</span></span><br></pre></td></tr></table></figure>
+        
+        
+          <a class="icon u-url" target="_blank" rel="noopener me" href="http://github.com/probberechts/cactus-dark" aria-label="github" title="github">
+            <i class="fa-brands fa-github"></i><!--
+      ---></a><!--
+    ---><!--
+    --->, 
+        
+      
+        
+        
+          <a class="icon u-url" target="_blank" rel="noopener me" href="/blogs/" aria-label="twitter" title="twitter">
+            <i class="fa-brands fa-twitter"></i><!--
+      ---></a><!--
+    ---><!--
+    --->, 
+        
+      
+        
+        
+          <a class="icon u-url" target="_blank" rel="noopener me" href="/blogs/" aria-label="facebook" title="facebook">
+            <i class="fa-brands fa-facebook"></i><!--
+      ---></a><!--
+    ---><!--
+    --->, 
+        
+      
+        
+        
+          <a class="icon u-email" target="_blank" rel="noopener" href="mailto:name@email.com" aria-label="mail" title="mail">
+            <i class="fa-solid fa-envelope"></i><!--
+      ---></a>
+        <!--
+    --->, 
+        
+      
+        
+        
+          <a class="icon u-url" target="_blank" rel="noopener me" href="https://mastodon.social/@alice" aria-label="mastodon.social" title="mastodon.social">
+            <i class="fa-brands fa-mastodon"></i><!--
+      ---></a><!--
+    ---><!--
+    ---> and 
+        
+      
+        
+        
+          <a class="icon u-url" target="_blank" rel="noopener me" href="https://fosstodon.org/@alice" aria-label="fosstodon.org" title="fosstodon.org">
+            <i class="fa-brands fa-mastodon"></i><!--
+      ---></a><!--
+    ---><!--
+    --->.
+        
+      
+    </p>
+  
+</section>
 
-<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>load-once is a technique used to ensure that a function is called only once.<br>Subsequent calls will return the result of the first call.</p>
-<p>So, we nedd to record whether the function is called and the result. It is an<br>easy question. Let’s do it.</p>
-<h2 id="The-resolve"><a href="#The-resolve" class="headerlink" title="The resolve"></a>The resolve</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">once</span><span class="params">(func)</span> &#123;</span><br><span class="line">    let result = <span class="literal">null</span>;</span><br><span class="line">    let isCalled = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span><span class="params">(<span class="rest_arg">...args</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(isCalled) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        result = func.call(<span class="keyword">this</span>, ...args);</span><br><span class="line">        isCalled = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/implement-once">https://bigfrontend.dev/problem/implement-once</a></p>
-</blockquote>
-
+<section id="writing">
+  <span class="h1"><a href="/blogs/archives/">Writing</a></span>
+  
+  <ul class="post-list">
+    
+    
+      
+    
+    
+      <li class="post-item">
+        
+    <div class="meta">
+      
+        
+          <time datetime="2024-04-10T08:24:31.000Z" class="dt-published" itemprop="datePublished">2024-04-10</time>
+        
       
     </div>
 
-  </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
+        <span>
+    
+        <a class="" href="/blogs/2024/04/10/promisify/">promisify</a>
     
 
+
+</span>
+      </li>
     
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/blogs/2024/04/10/find-the-largest-difference/"><span>find-the-largest-difference</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/blogs/2024/04/10/find-the-largest-difference/" rel="bookmark">
-        <time class="entry-date published" datetime="2024-04-10T07:40:04.000Z">
-          2024-04-10
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
+      <li class="post-item">
+        
+    <div class="meta">
       
-        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>Given an array of numbers, pick any two numbers a and b, we could get the<br>difference by Math.abs(a - b).</p>
-<p>Can you write a function to get the largest difference?</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">largestDiff</span><span class="params">([-<span class="number">1</span>, <span class="number">2</span>,<span class="number">3</span>,<span class="number">10</span>, <span class="number">9</span>])</span></span></span><br><span class="line"><span class="comment">// 11, obviously Math.abs(-1 - 10) is the largest</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">largestDiff</span><span class="params">([])</span></span></span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">largestDiff</span><span class="params">([<span class="number">1</span>])</span></span></span><br><span class="line"><span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>we’re given an array of numbers. The task is to pick any two numbers, find the<br>difference, and determine the largest difference. Here’s how we can tackle this<br>problem:</p>
-<p>First, let’s write a function to calculate the largest difference. We’ll need to<br>handle an edge case: if the length of the array is zero, return 0.</p>
-<p>Next, we can calculate the difference between the maximum and minimum values. In<br>just two lines of code, we can accomplish this with:</p>
-<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">array</span>.<span class="built_in">length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(<span class="built_in">array</span>) - <span class="built_in">min</span>(<span class="built_in">array</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Second， if we are not allowed to use Math.min() and Math.max(), we can use loop<br>to find the max and min and then get the result.</p>
-<p>To do this, we’ll keep track of the minimum with a value of infinity, and set<br>the initial value for max to negative infinity.</p>
-<p>The we use the loop function to compare the number one by one and calculate the<br>result.</p>
-<h2 id="The-resolve"><a href="#The-resolve" class="headerlink" title="The resolve"></a>The resolve</h2><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> largestDiff(arr) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!arr.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span><span class="built_in"> min</span> = Infinity;</span><br><span class="line">  <span class="keyword">let</span><span class="built_in"> max</span> = - Infinity;</span><br><span class="line">  <span class="keyword">let</span> result = - Infinity;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> <span class="type">item</span> <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="type">item</span> &lt;<span class="built_in"> min</span>) &#123;</span><br><span class="line">     <span class="built_in"> min</span> = <span class="type">item</span>;</span><br><span class="line">      result =<span class="built_in"> max</span> -<span class="built_in"> min</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="type">item</span> &gt;<span class="built_in"> max</span>) &#123;</span><br><span class="line">     <span class="built_in"> max</span> = <span class="type">item</span>;</span><br><span class="line">      result =<span class="built_in"> max</span> -min;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/Find-the-largest-difference">https://bigfrontend.dev/problem/Find-the-largest-difference</a></p>
-</blockquote>
-
+        
+          <time datetime="2024-04-10T07:58:39.000Z" class="dt-published" itemprop="datePublished">2024-04-10</time>
+        
       
     </div>
 
-  </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
+        <span>
+    
+        <a class="" href="/blogs/2024/04/10/implement-once/">implement-once</a>
     
 
+
+</span>
+      </li>
     
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/blogs/2024/04/10/Traverse-DOM-level-by-level/"><span>Traverse-DOM-level-by-level</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/blogs/2024/04/10/Traverse-DOM-level-by-level/" rel="bookmark">
-        <time class="entry-date published" datetime="2024-04-10T07:22:57.000Z">
-          2024-04-10
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
+      <li class="post-item">
+        
+    <div class="meta">
       
-        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>Given a DOM tree, flatten it into an one dimensional array, in the order of<br>layer by layer, like below.<br><img src="https://cdn.bfe.dev/bfe/img/ykqFdOIOaXFyn2uZ8h5Lt02sFaYb5eZ8_1063x546_1598232821941.png"></p>
-<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>We need to traverse it level by level, resulting in this array:<br><code>[div, p, p, div, a, img, button]</code></p>
-<p>This problem is a typical BFS (Breadth-First Search) problem, which we can solve<br>using a queue. Here’s a step-by-step approach:</p>
-<ol>
-<li><p>Create a queue and add the root to it.</p>
-</li>
-<li><p>While the queue is not empty, shift the head out and add it to the result.</p>
-</li>
-<li><p>Add the children of the current node to the queue.</p>
-</li>
-<li><p>Repeat steps 2-3 until the queue is empty.</p>
-</li>
-</ol>
-<h2 id="The-resolve"><a href="#The-resolve" class="headerlink" title="The resolve"></a>The resolve</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">traverseDOM</span><span class="params">(root)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!root) <span class="keyword">return</span> [];</span><br><span class="line"></span><br><span class="line">  <span class="type">const</span> result = [];</span><br><span class="line">  <span class="type">const</span> queue = [root];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (queue.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="type">const</span> current = queue.<span class="built_in">shift</span>();</span><br><span class="line">    result.<span class="built_in">push</span>(current);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (current.children) &#123;</span><br><span class="line">      <span class="keyword">for</span> (let child of current.children) &#123;</span><br><span class="line">        queue.<span class="built_in">push</span>(child);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/Traverse-DOM-level-by-level">https://bigfrontend.dev/problem/Traverse-DOM-level-by-level</a></p>
-</blockquote>
-
+        
+          <time datetime="2024-04-10T07:40:04.000Z" class="dt-published" itemprop="datePublished">2024-04-10</time>
+        
       
     </div>
 
-  </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
+        <span>
+    
+        <a class="" href="/blogs/2024/04/10/find-the-largest-difference/">find-the-largest-difference</a>
     
 
+
+</span>
+      </li>
     
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/blogs/2024/04/10/improve-a-function/"><span>improve-a-function</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/blogs/2024/04/10/improve-a-function/" rel="bookmark">
-        <time class="entry-date published" datetime="2024-04-10T02:41:07.000Z">
-          2024-04-10
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
+      <li class="post-item">
+        
+    <div class="meta">
       
-        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// Given <span class="keyword">an</span> <span class="built_in">input</span> of array,</span><br><span class="line">// which <span class="keyword">is</span> made of <span class="built_in">items</span> with &gt;= <span class="number">3</span> properties</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="built_in">items</span> = [</span><br><span class="line">  &#123;color: <span class="string">&#x27;red&#x27;</span>, <span class="built_in">type</span>: <span class="string">&#x27;tv&#x27;</span>, age: <span class="number">18</span>&#125;,</span><br><span class="line">  &#123;color: <span class="string">&#x27;silver&#x27;</span>, <span class="built_in">type</span>: <span class="string">&#x27;phone&#x27;</span>, age: <span class="number">20</span>&#125;,</span><br><span class="line">  &#123;color: <span class="string">&#x27;blue&#x27;</span>, <span class="built_in">type</span>: <span class="string">&#x27;book&#x27;</span>, age: <span class="number">17</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">// <span class="keyword">an</span> exclude array made of key value pair</span><br><span class="line">const excludes = [</span><br><span class="line">  &#123;<span class="keyword">k</span>: <span class="string">&#x27;color&#x27;</span>, v: <span class="string">&#x27;silver&#x27;</span>&#125;,</span><br><span class="line">  &#123;<span class="keyword">k</span>: <span class="string">&#x27;type&#x27;</span>, v: <span class="string">&#x27;tv&#x27;</span>&#125;,</span><br><span class="line">  ...</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title">excludeItems</span><span class="params">(items, excludes)</span> &#123;</span><br><span class="line">  excludes.forEach( pair =&gt; &#123;</span><br><span class="line">    <span class="built_in">items</span> = <span class="built_in">items</span>.<span class="built_in">filter</span>(item =&gt; item[pair.<span class="keyword">k</span>] === item[pair.v])</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">items</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p>What does this function excludeItems do?</p>
-</li>
-<li><p>Is this function working as expected ?</p>
-</li>
-<li><p>What is the time complexity of this function?</p>
-</li>
-<li><p>How would you optimize it ?</p>
-</li>
-</ol>
-<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>Our task is to filter the items based on the conditions specified in the<br>“exclude” array. For example, if the conditions are {“color”: “silver”} and<br>{“type”: “TV”}, then the item that matches both conditions (i.e., a silver TV)<br>would be excluded.</p>
-<p>But, as we’ll see, there’s a typo in the function that prevents it from working<br>as expected.</p>
-<p>The first thing we need to do is fix the typo in the function. Instead of<br>excluding items that match the conditions, the function is currently excluding<br>items that don’t match the conditions. To fix this, we need to change the <code>!==</code><br>operator to <code>===</code> in the if statement. Also the condition should be<br><code>item[pair.k] !== pair.v</code></p>
-<p>The optimized version of the excludeItems function still has a time complexity<br>of O(n * m), where n is the number of items in the items array and m is the<br>number of key-value pairs in the excludes array. However, the optimization lies<br>in the fact that it only iterates over the items array once, regardless of the<br>number of key-value pairs in the excludes array.</p>
-<p>The optimization involves creating a set of excluded properties and values<br>first, and then filtering the items array based on this set. By doing so, it<br>avoids iterating over the entire items array multiple times, which was the case<br>in the original implementation.</p>
-<p>The optimized version achieves better performance by iterating over the items<br>array only once and using a set to efficiently check for excluded properties and<br>values. This approach reduces the number of iterations and comparisons needed to<br>filter the items, leading to improved efficiency compared to the original<br>implementation.</p>
-<h2 id="The-resolve"><a href="#The-resolve" class="headerlink" title="The resolve"></a>The resolve</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">excludeItems</span>(items, exclude) &#123;</span><br><span class="line">  <span class="keyword">const</span> excludeMap = <span class="keyword">new </span><span class="class title_">Map</span>();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> condition of exclude) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;<span class="built_in">key</span>, value&#125; = condition;</span><br><span class="line">    <span class="keyword">if</span> (!excludeMap.<span class="property">has</span>(<span class="built_in">key</span>)) &#123;</span><br><span class="line">      excludeMap.<span class="property">set</span>(<span class="built_in">key</span>, <span class="keyword">new </span><span class="class title_">Set</span>());</span><br><span class="line">    &#125;</span><br><span class="line">    excludeMap.<span class="property">get</span>(<span class="built_in">key</span>).<span class="property">add</span>(value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> items.<span class="property">filter</span>(item =&gt; &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> [<span class="built_in">key</span>, valueSet] of excludeMap.<span class="property">entries</span>()) &#123;</span><br><span class="line">      <span class="keyword">if</span> (valueSet.<span class="property">has</span>(item[<span class="built_in">key</span>])) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/improve-a-function">https://bigfrontend.dev/problem/improve-a-function</a></p>
-</blockquote>
-
+        
+          <time datetime="2024-04-10T07:22:57.000Z" class="dt-published" itemprop="datePublished">2024-04-10</time>
+        
       
     </div>
 
-  </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
+        <span>
+    
+        <a class="" href="/blogs/2024/04/10/Traverse-DOM-level-by-level/">Traverse-DOM-level-by-level</a>
     
 
+
+</span>
+      </li>
     
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/blogs/2024/04/09/this/"><span>this</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/blogs/2024/04/09/this/" rel="bookmark">
-        <time class="entry-date published" datetime="2024-04-09T07:44:19.000Z">
-          2024-04-09
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
+      <li class="post-item">
+        
+    <div class="meta">
       
-        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>What does the code snippet to the output by <code>console.log</code></p>
-<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">	<span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">	<span class="attr">b</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">		<span class="built_in">console</span>.<span class="built_in">log</span>(this.a);</span><br><span class="line">	&#125;,</span><br><span class="line">	c() &#123;</span><br><span class="line">		<span class="built_in">console</span>.<span class="built_in">log</span>(this.a);</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">d</span>: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.<span class="built_in">log</span>(this.a);</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">e</span>: (<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.<span class="built_in">log</span>(this.a);</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;)(),</span><br><span class="line">	<span class="attr">f</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.<span class="built_in">log</span>(this.a);</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">console</span>.<span class="built_in">log</span>(obj.a);</span><br><span class="line">	obj.b();</span><br><span class="line">	;(obj.b)();</span><br><span class="line"></span><br><span class="line">	const b = obj.b;</span><br><span class="line">	b();</span><br><span class="line">	obj.b.apply(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line">	obj.c();</span><br><span class="line">	obj.d();</span><br><span class="line">	;(obj.d)();</span><br><span class="line">	obj.d.apply(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line">	obj.e();</span><br><span class="line">	;(obj.e)();</span><br><span class="line">	obj.e.call(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line">	obj.f()();</span><br><span class="line">	;(obj.f())();</span><br><span class="line">	obj.f().call(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><ul>
-<li><p><code>const b = obj.b; b(); // undefined</code></p>
-<p>lose this binding</p>
-</li>
-<li><p><code>obj.b.apply(&#123; a: 2 &#125;); </code></p>
-<p>this will be altered into <code>&#123;a:2&#125;</code>, note that the origin <code>obj.a</code> will not be<br>altered.</p>
-</li>
-<li><p><code>obj.c(); //1</code></p>
-</li>
-<li><p><code>obj.d(); // undefined</code></p>
-<p>arrow function, this is actually window</p>
-</li>
-<li><p><code>;(obj.d)(); // undefined</code></p>
-</li>
-<li><p><code>obj.d.apply(&#123; a: 2 &#125;); // undefined</code></p>
-<p>This behavior occurs because <code>obj.d</code> is an arrow function. Arrow functions do<br>not bind their own this context but inherit it from the surrounding lexical<br>context where they were defined. In this case, since <code>obj.d</code> is defined within<br>the object <code>obj</code>, the arrow function <code>d</code> retains the this value from the<br>surrounding context, which is the global object.</p>
-</li>
-<li><p><code>obj.e();</code> <code>;(obj.e)();</code> <code>obj.e.call(&#123; a: 2 &#125;);</code></p>
-<p>In the case of <code>obj.e</code>, the arrow function is created inside _ an immediately<br>invoked function expression (IIFE) _. Arrow functions inherit this from the<br>surrounding lexical context where they are defined. In this scenario, the<br>arrow function inside <code>obj.e</code> will capture the this value of the surrounding<br>context, which is the global object (typically window in a browser<br>environment).</p>
-<p>Therefore, when <code>obj.e</code> is invoked, the this keyword inside the arrow function<br>will refer to the global object, maintaining the same this reference as the<br>surrounding context where the arrow function was defined.</p>
-<p>In summary, when executing <code>obj.e</code>, the this keyword inside the arrow function<br>defined within <code>obj.e</code> will point to the global object (window in a browser<br>environment) due to the lexical scoping behavior of arrow functions.<br>immediately function, return the arrow function just as the <code>d()</code>, so this is<br>also points to the Window</p>
-</li>
-<li><p><code>obj.f()(); </code> <code>;(obj.f())();</code> <code>obj.f().call(&#123; a: 2 &#125;);</code></p>
-<p>When invoking <code>obj.f()()</code>, the this keyword inside the arrow function returned<br>by <code>obj.f() </code> will refer to the object <code>obj</code>. This behavior occurs because the<br>arrow function inherits its this value from the surrounding lexical context<br>where it was defined, which is the object <code>obj</code> in this case.</p>
-<p>Therefore, when <code>obj.f()()</code> is executed, the this keyword inside the arrow<br>function will maintain its reference to the object <code>obj</code>, as it inherits the<br>this value from the lexical scope in which it was created.</p>
-<p>In summary, when calling <code>obj.f()()</code>, the this keyword inside the arrow<br>function returned by <code>obj.f()</code> will point to the object obj.</p>
-</li>
-</ul>
-<h2 id="The-result"><a href="#The-result" class="headerlink" title="The result"></a>The result</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">a</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line">obj.<span class="title function_">b</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line">obj.<span class="title function_">b</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">const</span> b = obj.<span class="property">b</span>;</span><br><span class="line"><span class="title function_">b</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line">obj.<span class="property">b</span>.<span class="title function_">apply</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">obj.<span class="title function_">c</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line">obj.<span class="title function_">d</span>();</span><br><span class="line">obj.<span class="title function_">d</span>();</span><br><span class="line">obj.<span class="property">d</span>.<span class="title function_">apply</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line">obj.<span class="title function_">e</span>();</span><br><span class="line">obj.<span class="title function_">e</span>();</span><br><span class="line">obj.<span class="property">e</span>.<span class="title function_">call</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">obj.<span class="title function_">f</span>()();</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">obj.<span class="title function_">f</span>()();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line">obj.<span class="title function_">f</span>().<span class="title function_">call</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/quiz/this">https://bigfrontend.dev/quiz/this</a></p>
-</blockquote>
-
+        
+          <time datetime="2024-04-10T02:41:07.000Z" class="dt-published" itemprop="datePublished">2024-04-10</time>
+        
       
     </div>
 
-  </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
+        <span>
+    
+        <a class="" href="/blogs/2024/04/10/improve-a-function/">improve-a-function</a>
     
 
+
+</span>
+      </li>
     
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
+  </ul>
   
-    
-    <h3 class="article-title"><a href="/blogs/2024/04/07/detect-data-type/"><span>detect-data-type</span></a></h3>
-    
-  
+</section>
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/blogs/2024/04/07/detect-data-type/" rel="bookmark">
-        <time class="entry-date published" datetime="2024-04-07T09:44:30.000Z">
-          2024-04-07
-        </time>
-      </a>
-    </span>
+
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    Julie
   </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>This is an easy problem.</p>
-<p>For <a target="_blank" rel="noopener" href="https://javascript.info/types" title="null">all the basic data types</a> in JavaScript, how could you write a function to detect the type of arbitrary data?</p>
-<p>Besides basic types, you need to also handle also commonly used complex data type including <code>Array</code>, <code>ArrayBuffer</code>, <code>Map</code>, <code>Set</code>, <code>Date</code> and <code>Function</code></p>
-<p>The goal is not to list up all the data types but to show us how to solve the problem when we need to.</p>
-<p>The type should be lowercase</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">detectType</span>(<span class="number">1</span>); <span class="comment">// &#x27;number&#x27;</span></span><br><span class="line"><span class="title function_">detectType</span>(<span class="keyword">new</span> <span class="title class_">Map</span>()); <span class="comment">// &#x27;map&#x27;</span></span><br><span class="line"><span class="title function_">detectType</span>([]); <span class="comment">// &#x27;array&#x27;</span></span><br><span class="line"><span class="title function_">detectType</span>(<span class="literal">null</span>); <span class="comment">// &#x27;null&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// more in judging step</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>We’ll use object prototype and regular expressions:</p>
-<ol>
-<li>Use <code>Object.prototype.toString.call(data).toLowerCase()</code> to get the object type as a string, such as [object string]</li>
-<li>Use the regular expressions to extract the type from the string.</li>
-<li>Create a Set of allowed types [all the basic data types] and check if the extracted type is in the set</li>
-<li>Use a while loop to loop through from column 0 to the last column and collect the result.</li>
-<li>if the type is in the set, we return it. Or we return ‘object’</li>
-</ol>
-<h2 id="The-slove"><a href="#The-slove" class="headerlink" title="The slove"></a>The slove</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">any</span>&#125; <span class="variable">data</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">string</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">detectType</span>(<span class="params">data</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> tag = <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(data).<span class="title function_">toLowerCase</span>();</span><br><span class="line">	<span class="keyword">const</span> matches = tag.<span class="title function_">match</span>(<span class="regexp">/^\[object\s(.*?)\]/</span>);</span><br><span class="line">	<span class="keyword">if</span> (matches) &#123;</span><br><span class="line">		<span class="keyword">const</span> type = matches[<span class="number">1</span>];</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(type);</span><br><span class="line">		<span class="keyword">const</span> allowedTypes = <span class="keyword">new</span> <span class="title class_">Set</span>([</span><br><span class="line">			<span class="string">&quot;number&quot;</span>,</span><br><span class="line">			<span class="string">&quot;bigint&quot;</span>,</span><br><span class="line">			<span class="string">&quot;null&quot;</span>,</span><br><span class="line">			<span class="string">&quot;string&quot;</span>,</span><br><span class="line">			<span class="string">&quot;boolean&quot;</span>,</span><br><span class="line">			<span class="string">&quot;symbol&quot;</span>,</span><br><span class="line">			<span class="string">&quot;function&quot;</span>,</span><br><span class="line">			<span class="string">&quot;undefined&quot;</span>,</span><br><span class="line">			<span class="string">&quot;array&quot;</span>,</span><br><span class="line">			<span class="string">&quot;date&quot;</span>,</span><br><span class="line">			<span class="string">&quot;map&quot;</span>,</span><br><span class="line">			<span class="string">&quot;set&quot;</span>,</span><br><span class="line">			<span class="string">&quot;arraybuffer&quot;</span>,</span><br><span class="line">		]);</span><br><span class="line">		<span class="keyword">if</span> (allowedTypes.<span class="title function_">has</span>(type)) &#123;</span><br><span class="line">			<span class="keyword">return</span> type;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;object&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/decode-message">https://bigfrontend.dev/problem/decode-message</a></p>
-</blockquote>
-
-      
-    </div>
-
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/blogs/">Home</a></li><!--
+     --><!--
+       --><li><a href="/blogs/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/blogs/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
   </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/blogs/2024/04/07/decode-message/"><span>decode-message</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/blogs/2024/04/07/decode-message/" rel="bookmark">
-        <time class="entry-date published" datetime="2024-04-07T08:19:12.000Z">
-          2024-04-07
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>Your are given a 2-D array of characters. There is a hidden message in it.</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">I</span> <span class="variable">B</span> <span class="built_in">C</span> <span class="variable">A</span> <span class="variable">L</span> <span class="built_in">K</span> <span class="variable">A</span></span><br><span class="line"><span class="built_in">D</span> <span class="variable">R</span> <span class="variable">F</span> <span class="built_in">C</span> <span class="variable">A</span> <span class="built_in">E</span> <span class="variable">A</span></span><br><span class="line"><span class="variable">G</span> <span class="variable">H</span> <span class="built_in">O</span> <span class="built_in">E</span> <span class="variable">L</span> <span class="variable">A</span> <span class="built_in">D</span></span><br></pre></td></tr></table></figure>
-
-<p>The way to collect the message is as follows:</p>
-<ol>
-<li>start at top left</li>
-<li>move diagonally down right</li>
-<li>when cannot move any more, try to switch to diagonally up right</li>
-<li>when cannot move any more, try switch to diagonally down right, repeat 3<br>stop when cannot neither move down right or up right. the character on the path is the message<br>for the input above, IROCLED should be returned.</li>
-</ol>
-<p><strong>notes</strong><br>if no characters could be collected, return empty string</p>
-<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>We’ll create a function called <code>decode</code> that accepts a 2D array and decodes the message using the following approach:</p>
-<ol>
-<li>If the length of the array or message is 0, return an empty string.</li>
-<li>Loop through the columns from 0 to the last column.</li>
-<li>Keep track of the coordinates and the direction (default is positive, meaning going down).</li>
-<li>Use a while loop to loop through from column 0 to the last column and collect the result.</li>
-<li>When you match the end, switch the direction.</li>
-</ol>
-<h2 id="Edge-Cases"><a href="#Edge-Cases" class="headerlink" title="Edge Cases"></a>Edge Cases</h2><ul>
-<li>If the length of the array or message is 0, return an empty string.</li>
-<li>If the row is bigger than the rows or smaller than 0, change the direction.</li>
-<li>If there’s only one row, handle the edge case to avoid overflow.</li>
-</ul>
-<h2 id="The-slove"><a href="#The-slove" class="headerlink" title="The slove"></a>The slove</h2><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string[][]&#125; message</span></span><br><span class="line"><span class="comment"> * @return &#123;string&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">function decode(message) &#123;</span><br><span class="line">  <span class="keyword">if</span>(!message.<span class="built_in">length</span>) <span class="built_in">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="keyword">if</span>(!message[<span class="number">0</span>].<span class="built_in">length</span>) <span class="built_in">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">  const rows = message.<span class="built_in">length</span>;</span><br><span class="line">  const cols = message[<span class="number">0</span>].<span class="built_in">length</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">let</span> result = &#x27;&#x27;</span><br><span class="line">  <span class="built_in">let</span> <span class="built_in">row</span> = <span class="number">0</span></span><br><span class="line">  <span class="built_in">let</span> <span class="built_in">col</span> = <span class="number">0</span></span><br><span class="line">  <span class="built_in">let</span> directionY = <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span>(<span class="built_in">col</span> &lt; cols &amp;&amp; <span class="built_in">row</span> &gt; -<span class="number">1</span> &amp;&amp; <span class="built_in">row</span> &lt; rows) &#123;</span><br><span class="line">    result += message[<span class="built_in">row</span>][<span class="built_in">col</span>]</span><br><span class="line">    <span class="built_in">col</span> += <span class="number">1</span></span><br><span class="line">    <span class="built_in">row</span> = <span class="built_in">row</span> + directionY</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">row</span> &gt; rows - <span class="number">1</span>) &#123;</span><br><span class="line">      directionY = -<span class="number">1</span></span><br><span class="line">      <span class="built_in">row</span> -= <span class="number">2</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">row</span> &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      directionY = <span class="number">1</span></span><br><span class="line">      <span class="built_in">row</span> +=<span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>该题目来自<a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/decode-message">https://bigfrontend.dev/problem/decode-message</a></p>
-</blockquote>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/blogs/tags/js、array/">js、array</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-
-<nav class="pagination">
-  
-  
-</nav>
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    <!-- Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a> -->
-    </br>
-    
-      &copy; 2024
-        Julie
-          
-  </p>
 </footer>
-    
-    
-  </div>
-</div>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+
+<script src="/blogs/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
 </body>
 </html>
