@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="The Definition of Promises:In JavaScript, a Promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. It is a proxy for a value th">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Promise">
+<meta property="og:url" content="https://qazyuan.github.io/blogs/2024/04/24/Promise/index.html">
+<meta property="og:site_name" content="Julie&#39;s blogs">
+<meta property="og:description" content="The Definition of Promises:In JavaScript, a Promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. It is a proxy for a value th">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-24T12:10:44.000Z">
+<meta property="article:modified_time" content="2024-04-24T12:29:02.713Z">
+<meta property="article:author" content="Julie">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="promise">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/blogs/images/logo1.png">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/blogs/images/logo1.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/blogs/images/logo1.png">
+        
+      
+    
+    <!-- title -->
+    <title>Promise</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blogs/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top"
+    onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i
+      class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="nav">
+    <ul>
+      
+        <li><a href="/blogs/">
+            Home
+          </a></li>
+        
+        <li><a href="/blogs/archives/">
+            Writing
+          </a></li>
+        
+        <li><a href="/blogs/about/">
+            About
+          </a></li>
+        
+        <li><a target="_blank" rel="noopener" href="https://github.com/qazyuan">
+            Projects
+          </a></li>
+        
+    </ul>
+  </span>
+  <span id="menu">
+    <!-- <span id="nav">
+      <ul>
+        
+          <li><a href="/blogs/">
+              Home
+            </a></li>
+          
+          <li><a href="/blogs/archives/">
+              Writing
+            </a></li>
+          
+          <li><a href="/blogs/about/">
+              About
+            </a></li>
+          
+          <li><a target="_blank" rel="noopener" href="https://github.com/qazyuan">
+              Projects
+            </a></li>
+          
+      </ul>
+    </span> -->
+    <br />
+    <span id="actions">
+      <ul>
+        
+            
+              <li><a class="icon" aria-label="Next post" href="/blogs/2024/04/10/promisify/"><i
+                    class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();"
+                    onmouseout="$('#i-next').toggle();"></i></a></li>
+              
+                <li><a class="icon" aria-label="Back to top" href="#"
+                    onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up"
+                      aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a>
+                </li>
+                <!-- <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li> -->
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">
+        Previous post
+      </span>
+      <span id="i-next" class="info" style="display:none;">
+        Next post
+      </span>
+      <span id="i-top" class="info" style="display:none;">
+        Back to top
+      </span>
+      <span id="i-share" class="info" style="display:none;">
+        Share post
+      </span>
+    </span>
+    <br />
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://qazyuan.github.io/blogs/2024/04/24/Promise/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&text=Promise"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&title=Promise"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&is_video=false&description=Promise"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Promise&body=Check out this article: https://qazyuan.github.io/blogs/2024/04/24/Promise/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&title=Promise"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&title=Promise"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&title=Promise"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&title=Promise"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&name=Promise&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://qazyuan.github.io/blogs/2024/04/24/Promise/&t=Promise"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+      
+        <div id="toc">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Definition-of-Promises"><span class="toc-number">1.</span> <span class="toc-text">The Definition of Promises:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-all-VS-Promise-race"><span class="toc-number">2.</span> <span class="toc-text">Promise.all() VS Promise.race()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Problem-It-Sloves"><span class="toc-number">3.</span> <span class="toc-text">The Problem It Sloves</span></a></li></ol>
+        </div>
+        
+  </span>
+</div>
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Promise
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Julie</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-24T12:10:44.000Z" class="dt-published" itemprop="datePublished">2024-04-24</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/blogs/tags/js/" rel="tag">js</a>, <a class="p-category" href="/blogs/tags/promise/" rel="tag">promise</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="The-Definition-of-Promises"><a href="#The-Definition-of-Promises" class="headerlink" title="The Definition of Promises:"></a>The Definition of Promises:</h2><p>In JavaScript, a Promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. It is a proxy for a value that may not be known when the Promise is created. Promises allow you to associate handlers with an asynchronous action’s eventual success value or failure reason. This enables asynchronous methods to return values similar to synchronous methods by returning a Promise to supply the value at some point in the future.</p>
+<p>A Promise can be in one of three states:</p>
+<ol>
+<li><strong>Pending</strong>: The initial state when the Promise is neither fulfilled nor rejected.</li>
+<li><strong>Fulfilled</strong>: Indicates that the operation was completed successfully.</li>
+<li><strong>Rejected</strong>: Indicates that the operation failed.</li>
+</ol>
+<p>When a Promise is settled, it means it is either fulfilled or rejected, but not pending. The term “resolved” is also used with Promises, indicating that the Promise is settled or “locked-in” to match the eventual state of another Promise. Once a Promise is resolved, further resolving or rejecting it has no effect.</p>
+<p>Promises in JavaScript are commonly used for handling asynchronous operations in a more structured and manageable way. They provide a mechanism for handling the results of asynchronous tasks, allowing developers to write cleaner and more maintainable asynchronous code. Promises can be chained together using methods like <code>then()</code>, <code>catch()</code>, and <code>finally()</code> to handle the success and failure of asynchronous operations in a sequential manner.</p>
+<h2 id="Promise-all-VS-Promise-race"><a href="#Promise-all-VS-Promise-race" class="headerlink" title="Promise.all() VS Promise.race()"></a>Promise.all() VS Promise.race()</h2><p>Promise. all multiple Promise the instance is packaged as a new Promise instance. At the same time, the return values of success and failure are different. The return values of success are <strong>an array of results</strong> , and returns when it fails <strong>the value of the first rejected failure state.</strong> </p>
+<p>In Promise.all, an array is passed in, and an array is returned. The values returned by the input promise objects are arranged in the array in order. However, note that the order in which they are executed is not in order unless the iterable objects are empty. </p>
+<p>Note that the order of data in the array of successful results obtained by Promise.all is the same as that received by Promise.all. In this case, when multiple requests are sent and data is obtained and used according to the request order, Promise.all can be used to solve the problem.</p>
+<p><strong>（2）Promise.race</strong><br>As the name implies, Promse.race means a race, which means that if any result in Promise.race([p1, p2, p3]) gets faster, the result is returned, regardless of whether the result itself is successful or failed. When you want to do something, how long will it take to stop doing it? You can use this method to solve it:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Promise</span>.<span class="title function_">race</span>([promise1,<span class="title function_">timeOutPromise</span>(<span class="number">5000</span>)]).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">  </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="The-Problem-It-Sloves"><a href="#The-Problem-It-Sloves" class="headerlink" title="The Problem It Sloves"></a>The Problem It Sloves</h2><p>In my work, I often encounter such A requirement. For example, after I use ajax to send A request A, I get the data after success, and I need to pass the data to the request B; Then I need to write the following code:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&#x27;./a.txt&#x27;</span>,<span class="string">&#x27;utf8&#x27;</span>,<span class="keyword">function</span>(<span class="params">err,data</span>)&#123;</span><br><span class="line">  fs.<span class="title function_">readFile</span>(data,<span class="string">&#x27;utf8&#x27;</span>,<span class="keyword">function</span>(<span class="params">err,data</span>)&#123;</span><br><span class="line">    fs.<span class="title function_">readFile</span>(data,<span class="string">&#x27;utf8&#x27;</span>,<span class="keyword">function</span>(<span class="params">err,data</span>)&#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>The preceding code has the following disadvantages:</p>
+<ul>
+<li>the latter request depends on the data passing down after the previous request is successful, which causes multiple ajax requests to be nested and the code is not intuitive enough. </li>
+<li>if the first and second requests do not need to pass parameters, the next request needs to be executed after the previous request succeeds. In this case, the code needs to be written as above, resulting in insufficient intuitive code.</li>
+</ul>
+<p><code>Promise</code> after it appears, the code becomes as follows:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">read</span>(<span class="params">url</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    fs.<span class="title function_">readFile</span>(url,<span class="string">&#x27;utf8&#x27;</span>,<span class="keyword">function</span>(<span class="params">error,data</span>)&#123;</span><br><span class="line">      error &amp;&amp; <span class="title function_">reject</span>(error)</span><br><span class="line">      <span class="title function_">resolve</span>(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">read</span>(<span class="string">&#x27;./a.txt&#x27;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">read</span>(data) </span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">read</span>(data)  </span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>In this way, the code looks much simpler and solves the problem of Hell callback.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/blogs/">Home</a></li>
+        
+          <li><a href="/blogs/archives/">Writing</a></li>
+        
+          <li><a href="/blogs/about/">About</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/qazyuan">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Definition-of-Promises"><span class="toc-number">1.</span> <span class="toc-text">The Definition of Promises:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise-all-VS-Promise-race"><span class="toc-number">2.</span> <span class="toc-text">Promise.all() VS Promise.race()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Problem-It-Sloves"><span class="toc-number">3.</span> <span class="toc-text">The Problem It Sloves</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://qazyuan.github.io/blogs/2024/04/24/Promise/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&text=Promise"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&title=Promise"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&is_video=false&description=Promise"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Promise&body=Check out this article: https://qazyuan.github.io/blogs/2024/04/24/Promise/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&title=Promise"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&title=Promise"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&title=Promise"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&title=Promise"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://qazyuan.github.io/blogs/2024/04/24/Promise/&name=Promise&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://qazyuan.github.io/blogs/2024/04/24/Promise/&t=Promise"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+      
+        
+          2024
+            <!-- Julie -->
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        
+          <li><a href="/blogs/">
+              Home
+            </a></li>
+          
+          <li><a href="/blogs/archives/">
+              Writing
+            </a></li>
+          
+          <li><a href="/blogs/about/">
+              About
+            </a></li>
+          
+          <li><a target="_blank" rel="noopener" href="https://github.com/qazyuan">
+              Projects
+            </a></li>
+          
+      </ul>
+    </nav>
+  </div>
+</footer>
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/blogs/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

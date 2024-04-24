@@ -2,6 +2,8 @@
 title: improve-a-function
 date: 2024-04-10 10:41:07
 tags:
+  - js
+  - algorithm
 ---
 
 ## Problem Description

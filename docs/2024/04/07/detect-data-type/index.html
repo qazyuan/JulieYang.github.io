@@ -6,16 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Problem DescriptionThis is an easy problem. For all the basic data types in JavaScript, how could you write a function to detect the type of arbitrary data? Besides basic types, you need to also handl">
+    <meta name="description" content="Problem DescriptionThis is an easy problem. For all the basic data types inJavaScript, how could you write a function to detect the type of arbitrary data? Besides basic types, you need to also handle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="detect-data-type">
 <meta property="og:url" content="https://qazyuan.github.io/blogs/2024/04/07/detect-data-type/index.html">
 <meta property="og:site_name" content="Julie&#39;s blogs">
-<meta property="og:description" content="Problem DescriptionThis is an easy problem. For all the basic data types in JavaScript, how could you write a function to detect the type of arbitrary data? Besides basic types, you need to also handl">
+<meta property="og:description" content="Problem DescriptionThis is an easy problem. For all the basic data types inJavaScript, how could you write a function to detect the type of arbitrary data? Besides basic types, you need to also handle">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-04-07T09:44:30.000Z">
-<meta property="article:modified_time" content="2024-04-09T07:32:39.688Z">
+<meta property="article:modified_time" content="2024-04-24T12:13:44.489Z">
 <meta property="article:author" content="Julie">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
     
     
@@ -193,6 +195,11 @@
       
 
       
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/blogs/tags/algorithm/" rel="tag">algorithm</a>, <a class="p-category" href="/blogs/tags/js/" rel="tag">js</a>
+    </div>
+
 
     </div>
   </header>
@@ -200,18 +207,18 @@
 
   <div class="content e-content" itemprop="articleBody">
     <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><p>This is an easy problem.</p>
-<p>For <a target="_blank" rel="noopener" href="https://javascript.info/types" title="null">all the basic data types</a> in JavaScript, how could you write a function to detect the type of arbitrary data?</p>
-<p>Besides basic types, you need to also handle also commonly used complex data type including <code>Array</code>, <code>ArrayBuffer</code>, <code>Map</code>, <code>Set</code>, <code>Date</code> and <code>Function</code></p>
-<p>The goal is not to list up all the data types but to show us how to solve the problem when we need to.</p>
+<p>For <a target="_blank" rel="noopener" href="https://javascript.info/types" title="null">all the basic data types</a> in<br>JavaScript, how could you write a function to detect the type of arbitrary data?</p>
+<p>Besides basic types, you need to also handle also commonly used complex data<br>type including <code>Array</code>, <code>ArrayBuffer</code>, <code>Map</code>, <code>Set</code>, <code>Date</code> and <code>Function</code></p>
+<p>The goal is not to list up all the data types but to show us how to solve the<br>problem when we need to.</p>
 <p>The type should be lowercase</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">detectType</span>(<span class="number">1</span>); <span class="comment">// &#x27;number&#x27;</span></span><br><span class="line"><span class="title function_">detectType</span>(<span class="keyword">new</span> <span class="title class_">Map</span>()); <span class="comment">// &#x27;map&#x27;</span></span><br><span class="line"><span class="title function_">detectType</span>([]); <span class="comment">// &#x27;array&#x27;</span></span><br><span class="line"><span class="title function_">detectType</span>(<span class="literal">null</span>); <span class="comment">// &#x27;null&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// more in judging step</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>We’ll use object prototype and regular expressions:</p>
 <ol>
-<li>Use <code>Object.prototype.toString.call(data).toLowerCase()</code> to get the object type as a string, such as [object string]</li>
+<li>Use <code>Object.prototype.toString.call(data).toLowerCase()</code> to get the object<br>type as a string, such as [object string]</li>
 <li>Use the regular expressions to extract the type from the string.</li>
-<li>Create a Set of allowed types [all the basic data types] and check if the extracted type is in the set</li>
-<li>Use a while loop to loop through from column 0 to the last column and collect the result.</li>
+<li>Create a Set of allowed types [all the basic data types] and check if the<br>extracted type is in the set</li>
+<li>Use a while loop to loop through from column 0 to the last column and collect<br>the result.</li>
 <li>if the type is in the set, we return it. Or we return ‘object’</li>
 </ol>
 <h2 id="The-slove"><a href="#The-slove" class="headerlink" title="The slove"></a>The slove</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">any</span>&#125; <span class="variable">data</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">string</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">detectType</span>(<span class="params">data</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> tag = <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(data).<span class="title function_">toLowerCase</span>();</span><br><span class="line">	<span class="keyword">const</span> matches = tag.<span class="title function_">match</span>(<span class="regexp">/^\[object\s(.*?)\]/</span>);</span><br><span class="line">	<span class="keyword">if</span> (matches) &#123;</span><br><span class="line">		<span class="keyword">const</span> type = matches[<span class="number">1</span>];</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(type);</span><br><span class="line">		<span class="keyword">const</span> allowedTypes = <span class="keyword">new</span> <span class="title class_">Set</span>([</span><br><span class="line">			<span class="string">&quot;number&quot;</span>,</span><br><span class="line">			<span class="string">&quot;bigint&quot;</span>,</span><br><span class="line">			<span class="string">&quot;null&quot;</span>,</span><br><span class="line">			<span class="string">&quot;string&quot;</span>,</span><br><span class="line">			<span class="string">&quot;boolean&quot;</span>,</span><br><span class="line">			<span class="string">&quot;symbol&quot;</span>,</span><br><span class="line">			<span class="string">&quot;function&quot;</span>,</span><br><span class="line">			<span class="string">&quot;undefined&quot;</span>,</span><br><span class="line">			<span class="string">&quot;array&quot;</span>,</span><br><span class="line">			<span class="string">&quot;date&quot;</span>,</span><br><span class="line">			<span class="string">&quot;map&quot;</span>,</span><br><span class="line">			<span class="string">&quot;set&quot;</span>,</span><br><span class="line">			<span class="string">&quot;arraybuffer&quot;</span>,</span><br><span class="line">		]);</span><br><span class="line">		<span class="keyword">if</span> (allowedTypes.<span class="title function_">has</span>(type)) &#123;</span><br><span class="line">			<span class="keyword">return</span> type;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;object&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

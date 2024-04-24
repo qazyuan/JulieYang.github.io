@@ -2,6 +2,8 @@
 title: implement-once
 date: 2024-04-10 15:58:39
 tags:
+  - js
+  - algorithm
 ---
 
 ## Problem Description

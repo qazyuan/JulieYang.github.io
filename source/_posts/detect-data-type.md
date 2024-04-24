@@ -2,17 +2,22 @@
 title: detect-data-type
 date: 2024-04-07 17:44:30
 tags:
+  - js
+  - algorithm
 ---
 
 ## Problem Description
 
 This is an easy problem.
 
-For [all the basic data types](https://javascript.info/types "null") in JavaScript, how could you write a function to detect the type of arbitrary data?
+For [all the basic data types](https://javascript.info/types "null") in
+JavaScript, how could you write a function to detect the type of arbitrary data?
 
-Besides basic types, you need to also handle also commonly used complex data type including `Array`, `ArrayBuffer`, `Map`, `Set`, `Date` and `Function`
+Besides basic types, you need to also handle also commonly used complex data
+type including `Array`, `ArrayBuffer`, `Map`, `Set`, `Date` and `Function`
 
-The goal is not to list up all the data types but to show us how to solve the problem when we need to.
+The goal is not to list up all the data types but to show us how to solve the
+problem when we need to.
 
 The type should be lowercase
 
@@ -29,10 +34,13 @@ detectType(null); // 'null'
 
 We'll use object prototype and regular expressions:
 
-1. Use `Object.prototype.toString.call(data).toLowerCase()` to get the object type as a string, such as [object string]
+1. Use `Object.prototype.toString.call(data).toLowerCase()` to get the object
+   type as a string, such as [object string]
 2. Use the regular expressions to extract the type from the string.
-3. Create a Set of allowed types [all the basic data types] and check if the extracted type is in the set
-4. Use a while loop to loop through from column 0 to the last column and collect the result.
+3. Create a Set of allowed types [all the basic data types] and check if the
+   extracted type is in the set
+4. Use a while loop to loop through from column 0 to the last column and collect
+   the result.
 5. if the type is in the set, we return it. Or we return 'object'
 
 ## The slove
