@@ -17,6 +17,7 @@ nav:
   home: /
   articles: /archives/
   about: /about/
+  # flash_card: /flash_card/
   projects: https://github.com/qazyuan
 
 # Links to your social media accounts.

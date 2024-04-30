@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="1.如果创建一个新的箭头函数会怎么样？What happens if you create a new arrow function 箭头函数是ES6中的提出来的，它没有prototype，也没有自己的this指向，更不可以使用arguments参数，所以不能New一个箭头函数。 The arrow function is introduced in ES6. It does not have a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arrow function">
+<meta property="og:url" content="https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/index.html">
+<meta property="og:site_name" content="Julie&#39;s blogs">
+<meta property="og:description" content="1.如果创建一个新的箭头函数会怎么样？What happens if you create a new arrow function 箭头函数是ES6中的提出来的，它没有prototype，也没有自己的this指向，更不可以使用arguments参数，所以不能New一个箭头函数。 The arrow function is introduced in ES6. It does not have a">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-30T07:44:52.000Z">
+<meta property="article:modified_time" content="2024-04-30T07:49:05.625Z">
+<meta property="article:author" content="Julie">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="js-base">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/blogs/images/logo1.png">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/blogs/images/logo1.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/blogs/images/logo1.png">
+        
+      
+    
+    <!-- title -->
+    <title>Arrow function</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blogs/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top"
+    onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i
+      class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="nav">
+    <ul>
+      
+        <li><a href="/blogs/">
+            Home
+          </a></li>
+        
+        <li><a href="/blogs/archives/">
+            Writing
+          </a></li>
+        
+        <li><a href="/blogs/about/">
+            About
+          </a></li>
+        
+        <li><a target="_blank" rel="noopener" href="https://github.com/qazyuan">
+            Projects
+          </a></li>
+        
+    </ul>
+  </span>
+  <span id="menu">
+    <!-- <span id="nav">
+      <ul>
+        
+          <li><a href="/blogs/">
+              Home
+            </a></li>
+          
+          <li><a href="/blogs/archives/">
+              Writing
+            </a></li>
+          
+          <li><a href="/blogs/about/">
+              About
+            </a></li>
+          
+          <li><a target="_blank" rel="noopener" href="https://github.com/qazyuan">
+              Projects
+            </a></li>
+          
+      </ul>
+    </span> -->
+    <br />
+    <span id="actions">
+      <ul>
+        
+            
+              <li><a class="icon" aria-label="Next post" href="/blogs/2024/04/30/js-base/execution-context/"><i
+                    class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();"
+                    onmouseout="$('#i-next').toggle();"></i></a></li>
+              
+                <li><a class="icon" aria-label="Back to top" href="#"
+                    onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up"
+                      aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a>
+                </li>
+                <!-- <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li> -->
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">
+        Previous post
+      </span>
+      <span id="i-next" class="info" style="display:none;">
+        Next post
+      </span>
+      <span id="i-top" class="info" style="display:none;">
+        Back to top
+      </span>
+      <span id="i-share" class="info" style="display:none;">
+        Share post
+      </span>
+    </span>
+    <br />
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&text=Arrow function"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&title=Arrow function"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&is_video=false&description=Arrow function"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Arrow function&body=Check out this article: https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&title=Arrow function"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&title=Arrow function"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&title=Arrow function"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&title=Arrow function"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&name=Arrow function&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&t=Arrow function"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+      
+        <div id="toc">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%A6%82%E6%9E%9C%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">1.如果创建一个新的箭头函数会怎么样？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#new%E6%93%8D%E4%BD%9C%E7%AC%A6%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">new操作符的实现步骤如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8E%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">2.箭头函数与普通函数的区别</span></a></li></ol>
+        </div>
+        
+  </span>
+</div>
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Arrow function
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Julie</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-30T07:44:52.000Z" class="dt-published" itemprop="datePublished">2024-04-30</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/blogs/tags/js/" rel="tag">js</a>, <a class="p-category" href="/blogs/tags/js-base/" rel="tag">js-base</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="1-如果创建一个新的箭头函数会怎么样？"><a href="#1-如果创建一个新的箭头函数会怎么样？" class="headerlink" title="1.如果创建一个新的箭头函数会怎么样？"></a>1.如果创建一个新的箭头函数会怎么样？</h2><p>What happens if you create a new arrow function</p>
+<p>箭头函数是ES6中的提出来的，它没有prototype，也没有自己的this指向，更不可以使用arguments参数，所以不能New一个箭头函数。</p>
+<p>The arrow function is introduced in ES6. It does not have a prototype, nor does it have its own this reference, and it cannot use the arguments parameter. Therefore, it is not possible to use the new operator with an arrow function.</p>
+<h3 id="new操作符的实现步骤如下："><a href="#new操作符的实现步骤如下：" class="headerlink" title="new操作符的实现步骤如下："></a>new操作符的实现步骤如下：</h3><p>The steps to implement the new operator are as follows:</p>
+<ol>
+<li>创建一个对象</li>
+</ol>
+<p>​	   	Create a new object</p>
+<ol start="2">
+<li>将构造函数的作用域赋给新对象（也就是将对象的<strong>proto</strong>属性指向构造函数的prototype属性）</li>
+</ol>
+<p>​		Assign the constructor function’s scope to the new object (in other words, set the object’s prototype property to point to the constructor function’s prototype property)</p>
+<ol start="3">
+<li>指向构造函数中的代码，构造函数中的this指向该对象（也就是为这个对象添加属性和方法）</li>
+</ol>
+<p>​		Point to the code in the constructor, and this in the constructor points to the object (That is, to add properties and methods to the object)</p>
+<ol start="4">
+<li>返回新的对象</li>
+</ol>
+<p>​		Return a new object</p>
+<p>所以，上面的第二、三步，箭头函数都是没有办法执行的。</p>
+<p>Therefore, the arrow functions in the above steps cannot be executed.</p>
+<h2 id="2-箭头函数与普通函数的区别"><a href="#2-箭头函数与普通函数的区别" class="headerlink" title="2.箭头函数与普通函数的区别"></a>2.箭头函数与普通函数的区别</h2><p>The difference between arrow functions and ordinary functions</p>
+<p><strong>（1）箭头函数比普通函数更加简洁</strong></p>
+<p>​	<strong>Arrow functions are more concise than ordinary functions</strong></p>
+<ul>
+<li>如果没有参数，就直接写一个空括号即可</li>
+<li>If there are no arguments, just write an empty parenthesis</li>
+<li>如果只有一个参数，可以省去参数的括号</li>
+<li>If there is only one parameter, you can omit the parentheses for the parameter</li>
+<li>如果有多个参数，用逗号分割</li>
+<li>If there are multiple parameters, separate them with commas</li>
+<li>如果函数体的返回值只有一句，可以省略大括号</li>
+<li>If the return value of the function body is only one sentence, you can omit the braces</li>
+<li>如果函数体不需要返回值，且只有一句话，可以给这个语句前面加一个void关键字。最常见的就是调用一个函数：</li>
+<li>If the function body does not require a return value and only has one sentence, you can prefix the statement with a void keyword. The most common is to call a function:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; <span class="keyword">void</span> <span class="title function_">doesNotReturn</span>();</span><br></pre></td></tr></table></figure>
+
+<p><strong>（2）箭头函数没有自己的this</strong></p>
+<p>​	Arrow functions do not have their own ‘this’ keyword. </p>
+<p>​	箭头函数不会创建自己的this， 所以它没有自己的this，它只会在自己作用域的上一层继承this。所以箭头函数中this的指向在它在定义时已经确定了，之后不会改变。</p>
+<p>​	The arrow function doesn’t create its own this, so it doesn’t have its own this, it just inherits this at the level above its own scope. So the pointer to this in the arrow function was already fixed when it was defined, and it doesn’t change after that.</p>
+<p><strong>（3）箭头函数继承来的this指向永远不会改变</strong></p>
+<p>​	This pointer inherited from the arrow function never changes</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id = <span class="string">&#x27;GLOBAL&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="string">&#x27;OBJ&#x27;</span>,</span><br><span class="line">  <span class="attr">a</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">id</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">b</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">id</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.<span class="title function_">a</span>();    <span class="comment">// &#x27;OBJ&#x27;</span></span><br><span class="line">obj.<span class="title function_">b</span>();    <span class="comment">// &#x27;GLOBAL&#x27;</span></span><br><span class="line"><span class="keyword">new</span> obj.<span class="title function_">a</span>()  <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">new</span> obj.<span class="title function_">b</span>()  <span class="comment">// Uncaught TypeError: obj.b is not a constructor</span></span><br></pre></td></tr></table></figure>
+
+<p>​	对象obj的方法b是使用箭头函数定义的，这个函数中的this就永远指向它定义时所处的全局执行环境中的this，即便这个函数是作为对象obj的方法调用，this依旧指向Window对象。</p>
+<p>​	Method b of object obj is defined using an arrow function, and this in this function always points to this in the global execution environment in which it was defined, even if the function is called as a method of object obj, this still points to the Window object.</p>
+<p>​	需要注意，定义对象的大括号<code>&#123;&#125;</code>是无法形成一个单独的执行环境的，它依旧是处于全局执行环境中。</p>
+<p>​	It is worth noting that the curly brackets {} used to define objects cannot form a separate execution environment, they still remain in the global execution environment.</p>
+<p><strong>（4）call()、apply()、bind()等方法不能改变箭头函数中this的指向</strong></p>
+<p>The methods call(), apply(), bind(), etc. cannot change the reference of ‘this’ in arrow functions.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id = <span class="string">&#x27;Global&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="title function_">fun1</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">id</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">fun1</span>();                     <span class="comment">// &#x27;Global&#x27;</span></span><br><span class="line">fun1.<span class="title function_">call</span>(&#123;<span class="attr">id</span>: <span class="string">&#x27;Obj&#x27;</span>&#125;);     <span class="comment">// &#x27;Global&#x27;</span></span><br><span class="line">fun1.<span class="title function_">apply</span>(&#123;<span class="attr">id</span>: <span class="string">&#x27;Obj&#x27;</span>&#125;);    <span class="comment">// &#x27;Global&#x27;</span></span><br><span class="line">fun1.<span class="title function_">bind</span>(&#123;<span class="attr">id</span>: <span class="string">&#x27;Obj&#x27;</span>&#125;)();   <span class="comment">// &#x27;Global&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>（5）箭头函数不能作为构造函数使用</strong></p>
+<p>​	<strong>Arrow functions cannot be used as constructors</strong></p>
+<p>​	构造函数在new的步骤在上面已经说过了，实际上第二步就是将函数中的this指向该对象。 但是由于箭头函数时没有自己的this的，且this指向外层的执行环境，且不能改变指向，所以不能当做构造函数使用。</p>
+<p>​	The process of constructing a function with ‘new’ has been explained above. In fact, the second step is to refer the ‘this’ in the function to the object. However, since arrow functions do not have their own ‘this’ and the ‘this’ refers to the outer execution environment, and cannot be changed, they cannot be used as constructors.</p>
+<p><strong>（6）箭头函数没有自己的arguments</strong></p>
+<p>​	Arrow functions do not have their own arguments.</p>
+<p>​	箭头函数没有自己的arguments对象。在箭头函数中访问arguments实际上获得的是它外层函数的arguments值。</p>
+<p>​	The arrow function does not have its own arguments object. Accessing arguments in an arrow function actually gets the arguments value of its outer function.</p>
+<p><strong>（7）箭头函数没有prototype</strong></p>
+<p>​	Arrow functions do not have a prototype.</p>
+<p><strong>（8）箭头函数不能用作Generator函数，不能使用yeild关键字</strong></p>
+<p>​	Arrow functions cannot be used as Generator functions and cannot use the yeild keyword</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/blogs/">Home</a></li>
+        
+          <li><a href="/blogs/archives/">Writing</a></li>
+        
+          <li><a href="/blogs/about/">About</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/qazyuan">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%A6%82%E6%9E%9C%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">1.如果创建一个新的箭头函数会怎么样？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#new%E6%93%8D%E4%BD%9C%E7%AC%A6%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">new操作符的实现步骤如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E4%B8%8E%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">2.箭头函数与普通函数的区别</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&text=Arrow function"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&title=Arrow function"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&is_video=false&description=Arrow function"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Arrow function&body=Check out this article: https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&title=Arrow function"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&title=Arrow function"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&title=Arrow function"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&title=Arrow function"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&name=Arrow function&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://qazyuan.github.io/blogs/2024/04/30/js-base/arrow-function/&t=Arrow function"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+      
+        
+          2024
+            <!-- Julie -->
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        
+          <li><a href="/blogs/">
+              Home
+            </a></li>
+          
+          <li><a href="/blogs/archives/">
+              Writing
+            </a></li>
+          
+          <li><a href="/blogs/about/">
+              About
+            </a></li>
+          
+          <li><a target="_blank" rel="noopener" href="https://github.com/qazyuan">
+              Projects
+            </a></li>
+          
+      </ul>
+    </nav>
+  </div>
+</footer>
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/blogs/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
