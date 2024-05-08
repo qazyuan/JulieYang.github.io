@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Deep copy VS Shallow copy Shallow copy: Shallow copy refers to copying the attribute value of one object to another object. If the attribute value is a reference type, then the address of the referenc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep Copy">
+<meta property="og:url" content="https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/index.html">
+<meta property="og:site_name" content="Julie&#39;s blogs">
+<meta property="og:description" content="Deep copy VS Shallow copy Shallow copy: Shallow copy refers to copying the attribute value of one object to another object. If the attribute value is a reference type, then the address of the referenc">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-08T07:29:30.000Z">
+<meta property="article:modified_time" content="2024-05-08T07:37:32.412Z">
+<meta property="article:author" content="Julie">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="object">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/blogs/images/logo1.png">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/blogs/images/logo1.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/blogs/images/logo1.png">
+        
+      
+    
+    <!-- title -->
+    <title>Deep Copy</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/blogs/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top"
+    onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i
+      class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="nav">
+    <ul>
+      
+        <li><a href="/blogs/">
+            Home
+          </a></li>
+        
+        <li><a href="/blogs/archives/">
+            Writing
+          </a></li>
+        
+        <li><a href="/blogs/about/">
+            About
+          </a></li>
+        
+        <li><a target="_blank" rel="noopener" href="https://github.com/qazyuan">
+            Projects
+          </a></li>
+        
+    </ul>
+  </span>
+  <span id="menu">
+    <!-- <span id="nav">
+      <ul>
+        
+          <li><a href="/blogs/">
+              Home
+            </a></li>
+          
+          <li><a href="/blogs/archives/">
+              Writing
+            </a></li>
+          
+          <li><a href="/blogs/about/">
+              About
+            </a></li>
+          
+          <li><a target="_blank" rel="noopener" href="https://github.com/qazyuan">
+              Projects
+            </a></li>
+          
+      </ul>
+    </span> -->
+    <br />
+    <span id="actions">
+      <ul>
+        
+            
+              <li><a class="icon" aria-label="Next post" href="/blogs/2024/04/30/js-base/arrow-function/"><i
+                    class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();"
+                    onmouseout="$('#i-next').toggle();"></i></a></li>
+              
+                <li><a class="icon" aria-label="Back to top" href="#"
+                    onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up"
+                      aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a>
+                </li>
+                <!-- <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li> -->
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">
+        Previous post
+      </span>
+      <span id="i-next" class="info" style="display:none;">
+        Next post
+      </span>
+      <span id="i-top" class="info" style="display:none;">
+        Back to top
+      </span>
+      <span id="i-share" class="info" style="display:none;">
+        Share post
+      </span>
+    </span>
+    <br />
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&text=Deep Copy"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&title=Deep Copy"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&is_video=false&description=Deep Copy"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Deep Copy&body=Check out this article: https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&title=Deep Copy"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&title=Deep Copy"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&title=Deep Copy"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&title=Deep Copy"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&name=Deep Copy&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&t=Deep Copy"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+      
+        <div id="toc">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Implement-deep-copy"><span class="toc-number">1.</span> <span class="toc-text">Implement deep copy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89JSON-stringify"><span class="toc-number">1.1.</span> <span class="toc-text">（1）JSON.stringify()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Library-lodash%E2%80%99s-cloneDeep-method"><span class="toc-number">1.2.</span> <span class="toc-text">(2) Library lodash’s.cloneDeep method</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Handwritten-Deep-Copy-Function-Implementation"><span class="toc-number">1.3.</span> <span class="toc-text">(3) Handwritten Deep Copy Function Implementation</span></a></li></ol></li></ol>
+        </div>
+        
+  </span>
+</div>
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Deep Copy
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Julie</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-05-08T07:29:30.000Z" class="dt-published" itemprop="datePublished">2024-05-08</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/blogs/tags/js/" rel="tag">js</a>, <a class="p-category" href="/blogs/tags/object/" rel="tag">object</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p><strong>Deep copy VS Shallow copy</strong></p>
+<p><strong>Shallow copy</strong>: Shallow copy refers to copying the attribute value of one object to another object. If the attribute value is a reference type, then the address of the reference is copied to the object, so the two objects will have a reference of the same reference type. Shallow copying can be implemented using <strong>Object.assign()</strong> and the spread operator.</p>
+<p><strong>Deep copy</strong>: Compared to shallow copy, if a property value is a reference type, deep copy creates a reference type and copies the corresponding value to it, so the object gets a new reference type instead of a reference of the original type. Deep copying can be  achieved for some objects using two JSON functions. However, due to JSON’s stricter object format compared to JavaScript’s, this method fails if the object contains functions or Symbol types.</p>
+<h2 id="Implement-deep-copy"><a href="#Implement-deep-copy" class="headerlink" title="Implement deep copy"></a><strong>Implement deep copy</strong></h2><h3 id="（1）JSON-stringify"><a href="#（1）JSON-stringify" class="headerlink" title="（1）JSON.stringify()"></a><strong>（1）JSON.stringify()</strong></h3><ul>
+<li><p><strong>JSON.parse(JSON.stringify(obj))</strong> is one of the most commonly used deep copy methods. Its principle is to use JSON.stringify to serialize the JavaScript object into a JSON string, and then use <strong>JSON.parse()</strong> to deserialize (restore) the JavaScript object.</p>
+</li>
+<li><p>This method can be a simple implementation of deep copy, but there is a problem -  functions, undefined, and Symbol values in the copied object will be lost after processing with <strong>JSON.stringify()</strong>.</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;  <span class="attr">a</span>: <span class="number">0</span>,</span><br><span class="line">              <span class="attr">b</span>: &#123;</span><br><span class="line">                 <span class="attr">c</span>: <span class="number">0</span></span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj1));</span><br><span class="line">obj1.<span class="property">a</span> = <span class="number">1</span>;</span><br><span class="line">obj1.<span class="property">b</span>.<span class="property">c</span> = <span class="number">1</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1); <span class="comment">// &#123;a: 1, b: &#123;c: 1&#125;&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2); <span class="comment">// &#123;a: 0, b: &#123;c: 0&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Library-lodash’s-cloneDeep-method"><a href="#2-Library-lodash’s-cloneDeep-method" class="headerlink" title="(2) Library lodash’s.cloneDeep method"></a><strong>(2) Library lodash’s.cloneDeep method</strong></h3><p>The library also provides <strong>_.cloneDeep()</strong> for Deep Copying.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">&#x27;lodash&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">b</span>: &#123; <span class="attr">f</span>: &#123; <span class="attr">g</span>: <span class="number">1</span> &#125; &#125;,</span><br><span class="line">    <span class="attr">c</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = _.<span class="title function_">cloneDeep</span>(obj1);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">b</span>.<span class="property">f</span> === obj2.<span class="property">b</span>.<span class="property">f</span>);<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Handwritten-Deep-Copy-Function-Implementation"><a href="#3-Handwritten-Deep-Copy-Function-Implementation" class="headerlink" title="(3) Handwritten Deep Copy Function Implementation"></a><strong>(3) Handwritten Deep Copy Function Implementation</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 深拷贝的实现</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">deepCopy</span>(<span class="params">object</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!object || <span class="keyword">typeof</span> object !== <span class="string">&quot;object&quot;</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> newObject = <span class="title class_">Array</span>.<span class="title function_">isArray</span>(object) ? [] : &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> object) &#123;</span><br><span class="line">    <span class="keyword">if</span> (object.<span class="title function_">hasOwnProperty</span>(key)) &#123;</span><br><span class="line">      newObject[key] =</span><br><span class="line">        <span class="keyword">typeof</span> object[key] === <span class="string">&quot;object&quot;</span> ? <span class="title function_">deepCopy</span>(object[key]) : object[key];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> newObject;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/blogs/">Home</a></li>
+        
+          <li><a href="/blogs/archives/">Writing</a></li>
+        
+          <li><a href="/blogs/about/">About</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/qazyuan">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Implement-deep-copy"><span class="toc-number">1.</span> <span class="toc-text">Implement deep copy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89JSON-stringify"><span class="toc-number">1.1.</span> <span class="toc-text">（1）JSON.stringify()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Library-lodash%E2%80%99s-cloneDeep-method"><span class="toc-number">1.2.</span> <span class="toc-text">(2) Library lodash’s.cloneDeep method</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Handwritten-Deep-Copy-Function-Implementation"><span class="toc-number">1.3.</span> <span class="toc-text">(3) Handwritten Deep Copy Function Implementation</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&text=Deep Copy"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&title=Deep Copy"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&is_video=false&description=Deep Copy"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Deep Copy&body=Check out this article: https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&title=Deep Copy"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&title=Deep Copy"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&title=Deep Copy"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&title=Deep Copy"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&name=Deep Copy&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://qazyuan.github.io/blogs/2024/05/08/js-base/deep-copy/&t=Deep Copy"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+      
+        
+          2024
+            <!-- Julie -->
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        
+          <li><a href="/blogs/">
+              Home
+            </a></li>
+          
+          <li><a href="/blogs/archives/">
+              Writing
+            </a></li>
+          
+          <li><a href="/blogs/about/">
+              About
+            </a></li>
+          
+          <li><a target="_blank" rel="noopener" href="https://github.com/qazyuan">
+              Projects
+            </a></li>
+          
+      </ul>
+    </nav>
+  </div>
+</footer>
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/blogs/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
